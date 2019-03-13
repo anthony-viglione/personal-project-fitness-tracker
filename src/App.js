@@ -1,13 +1,17 @@
 import React, { Component } from 'react';
 import './App.css';
-import Login from './components/Login/Login'
+// import Login from './components/Login/Login'
+
+import {HashRouter} from 'react-router-dom';
+import routes from './routes';
 
 class App extends Component {
   render() {
     return (
       <div className="App">
-        <h1>Fitness Tracker</h1>
-        <Login></Login>
+        <HashRouter>
+          {routes}
+        </HashRouter>
       </div>
     );
   }
