@@ -19,3 +19,4 @@ app.use(sessions({
 }));
 
 app.listen(SERVER_PORT, ()=>console.log(`Fitness Tracker Running on Port: ${SERVER_PORT}`))
+
