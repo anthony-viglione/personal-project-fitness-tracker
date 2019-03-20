@@ -1,16 +1,16 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import Axios from 'axios';
+import axios from 'axios';
 
 
 class Form extends Component{
     constructor(){
         super()
         this.state={
-            calorieGoal:0,
-            fatGoalPercent:0,
-            proteinGoalPercent:0,
-            carbGoalPercent:0,
+            calorieGoal:"",
+            fatGoalPercent:"",
+            proteinGoalPercent:"",
+            carbGoalPercent:"",
             button:false
         }
     }
@@ -22,16 +22,20 @@ class Form extends Component{
     }
 
     changeGoals = async()=>{
+        const{email} = this.props
+        const{calorieGoal, fatGoalPercent, proteinGoalPercent, carbGoalPercent} = this.state
         let userGoals = {
-            email: this.props.email,
-            calorieGoal:this.state.calorieGoal,
-            fatGoalPercent:this.state.fatGoalPercent,
-            proteinGoalPercent:this.state.proteinGoalPercent,
-            carbGoalPercent:this.state.carbGoalPercent
+            calorieGoal,
+            fatGoalPercent,
+            proteinGoalPercent,
+            carbGoalPercent
         }
-
+        // console.log(email)
         try{
-            let res = await axios
+            // console.log(userGoals)
+            let res = await axios.put(`/api/goals/${email}`, userGoals)
+            // console.log(res)
+
         } catch(err) {
             alert(`something went wrong${err}`)
         }
@@ -40,7 +44,7 @@ class Form extends Component{
     render(){
         const{calorieGoal, fatGoalPercent, proteinGoalPercent, carbGoalPercent} = this.state
         // console.log(calorieGoal, fatGoalPercent,proteinGoalPercent,carbGoalPercent)
-        console.log(this)
+        // console.log(this)
         return(
             <div>
                 <div>
@@ -66,6 +70,9 @@ class Form extends Component{
                 </div>
                 <div>
                     <button onClick={()=>console.log(calorieGoal,fatGoalPercent,proteinGoalPercent,carbGoalPercent)}>Check State</button>
+                </div>
+                <div>
+                    <button onClick={()=>this.changeGoals()}>ChangeGoals</button>
                 </div>
                 {/* <div>{this.state.button && <button></button>}</div> */}
             </div>
