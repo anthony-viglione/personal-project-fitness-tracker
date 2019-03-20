@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import axios from 'axios';
 import { connect } from 'react-redux';
 import {updateUser, clearUser} from './../../redux/reducer';
+import Form from '../Form/Form';
 
 
 class Home extends Component{
@@ -11,7 +12,8 @@ class Home extends Component{
             calorieGoal:2000,
             fatGoalPercent:20,
             proteinGoalPercent:40,
-            carbGoalPercent:40
+            carbGoalPercent:40,
+            showEdit:true
         }
     }
     componentDidMount() {
@@ -27,7 +29,7 @@ class Home extends Component{
                 this.props.updateUser(res.data)
             } catch(err) {
                 // console.log(err)
-                // this.props.history.push('/') // comment out for testing Home
+                this.props.history.push('/') // comment out for testing Home
             }
         }
     }
@@ -36,6 +38,12 @@ class Home extends Component{
         await axios.post('./auth/logout')
         this.props.clearUser();
         this.props.history.push('/')
+    }
+
+    handleShowEdit=(val) => {
+        this.setState({
+            showEdit:!val
+        })
     }
 
     render(){
@@ -74,7 +82,11 @@ class Home extends Component{
                             <div>{carbGoalGrams}</div>
                         </div>
                     </div>
+                    <hi>
+                        <button onClick={e => this.handleShowEdit(this.state.showEdit)}>Edit Goals</button>
+                    </hi>
                 </div>
+                {this.state.showEdit && <Form/>}
             </div>
         )
     }
