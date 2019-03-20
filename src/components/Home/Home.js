@@ -60,7 +60,7 @@ class Home extends Component{
                     <h3>{email}</h3>
                     <button onClick={this.logout}>Logout</button>
                 </div>
-                <img src={img} alt=''/>
+                <img src={img} alt='' style={{width:'25%', height:'auto'}}/>
                 <div style={{display:"flex"}}>
                     <h1 style={{width:"200px"}}>GOALS </h1>
                     <div style={{width:'300px'}}>
@@ -84,6 +84,7 @@ class Home extends Component{
                         </div>
                     </div>
                     <h1>
+                        {!this.state.showEdit && <button onClick={e => this.handleShowEdit(this.state.showEdit)}>{toggleButton}</button>}
                         <button onClick={e => this.handleShowEdit(this.state.showEdit)}>{toggleButton}</button>
                     </h1>
                 </div>
@@ -96,7 +97,7 @@ class Home extends Component{
 const mapStateToProps = reduxState => {
     return reduxState
 }
-const mapDispatchToProps ={
+const mapDispatchToProps ={ //reducer holds the methods
     updateUser,
     clearUser
 }
