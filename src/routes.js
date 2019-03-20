@@ -6,7 +6,7 @@ import Home from './components/Home/Home'
 
 export default (
     <Switch>
-        <Route exact path ='/home' component={Home}/>
+        <Route exact path ='/home' component={Home} />
         <Route exact path ='/' component={Login} />
     </Switch>
 )
