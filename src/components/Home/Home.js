@@ -52,6 +52,7 @@ class Home extends Component{
         const fatGoalGrams =(calorieGoal*(fatGoalPercent*.01)/9).toFixed(0)
         const proteinGoalGrams =(calorieGoal*(proteinGoalPercent*.01)/4).toFixed(0)
         const carbGoalGrams =(calorieGoal*(carbGoalPercent*.01)/4).toFixed(0)
+        const toggleButton = !this.state.showEdit ? "Change Goals" : "Done";
         return(
             <div style={{display:"flex", alignItems:"center", flexDirection:"column"}}>
                 <h1>Home Page</h1>
@@ -83,7 +84,7 @@ class Home extends Component{
                         </div>
                     </div>
                     <hi>
-                        <button onClick={e => this.handleShowEdit(this.state.showEdit)}>Edit Goals</button>
+                        <button onClick={e => this.handleShowEdit(this.state.showEdit)}>{toggleButton}</button>
                     </hi>
                 </div>
                 {this.state.showEdit && <Form/>}
