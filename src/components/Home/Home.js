@@ -83,9 +83,9 @@ class Home extends Component{
                             <div>{carbGoalGrams}</div>
                         </div>
                     </div>
-                    <hi>
+                    <h1>
                         <button onClick={e => this.handleShowEdit(this.state.showEdit)}>{toggleButton}</button>
-                    </hi>
+                    </h1>
                 </div>
                 {this.state.showEdit && <Form/>}
             </div>
