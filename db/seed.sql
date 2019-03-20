@@ -4,6 +4,10 @@ password VARCHAR(255),
 email VARCHAR(50),
 username VARCHAR(30),
 user_image TEXT,
+calorie_goal INTEGER,
+fat_goal_percent INTEGER,
+protein_goal_percent INTEGER,
+carb_goal_percent INTEGER,
 PRIMARY KEY(id)
 );
 
