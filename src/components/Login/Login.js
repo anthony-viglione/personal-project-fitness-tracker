@@ -47,7 +47,8 @@ class Login extends Component{
             this.props.updateUser(res.data)
             this.props.history.push('/home')
         } catch(err) {
-            alert(err)
+            console.log(err)
+            alert('register error in Login')
         }
     }
 
