@@ -59,5 +59,19 @@ module.exports = {
         console.log('DESTROYED')
         req.session.destroy();
         res.sendStatus(200)
-    } 
+    }, 
+
+    editGoals: async(req,res) => {
+        // console.log(req.params)
+        // console.log(req.body)
+
+        const {email} = req.params;
+        const {calorieGoal, fatGoalPercent, proteinGoalPercent, carbGoalPercent} = req.body
+        // console.log(email, calorieGoal, fatGoalPercent, proteinGoalPercent, carbGoalPercent)
+
+        const db =req.app.get('db');
+        let updatedUser = await db.tracker.update_goals({email, calorieGoal, fatGoalPercent, proteinGoalPercent, carbGoalPercent})
+        console.log('changed goals')
+        res.status(200).send(updatedUser)
+    }
 }
