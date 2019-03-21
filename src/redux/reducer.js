@@ -5,7 +5,8 @@ const initialState = {
 }
 
 const UPDATE_USER = 'UPDATE_USER';
-const CLEAR_USER = 'CLEAR_USER'
+const CLEAR_USER = 'CLEAR_USER';
+const UPDATE_GOALS = 'UPDATE_GOALS';
 
 export function updateUser(user) {
     return {
@@ -20,6 +21,13 @@ export function clearUser() {
     }
 }
 
+export function updateGoals(goals){
+    return {
+        type: UPDATE_GOALS,
+        payload: goals
+    }
+}
+
 export default function reducer(state = initialState, action){
     const { type, payload } = action;
     switch(type){
@@ -29,6 +37,9 @@ export default function reducer(state = initialState, action){
             return{...state, id, email, img}
         case CLEAR_USER:
             return{...state, id:0, email:''}
+        case UPDATE_GOALS:
+            const {calorie_goal, fat_goal_percent, protein_goal_percent, carb_goal_percent} = payload;
+            return{...state, calorie_goal, fat_goal_percent, protein_goal_percent, carb_goal_percent}
         default:
             return state
     }
