@@ -35,9 +35,22 @@ class Form extends Component{
             // console.log(userGoals)
             let res = await axios.put(`/api/goals/${email}`, userGoals)
             // console.log(res)
+            console.log(res.data)
+            console.log(res.data[0])
+            // const{
+            //     email,
+            //     calorieGoal: calorie_goal,
+            //     fatGoalPercent: fat_goal_percent,
+            //     proteinGoalPercent: protein_goal_percent,
+            //     carbGoalPercent: carb_goal_percent   
+            // }=res.data[0]
+
+            // console.log(calorieGoal,fatGoalPercent,proteinGoalPercent,carbGoalPercent)
+            // console.log(calorie_goal,fat_goal_percent,protein_goal_percent,carb_goal_percent)
 
         } catch(err) {
-            alert(`something went wrong${err}`)
+            console.log(err)
+            alert(`something went wrong with the changeGoals method in Form`)
         }
     }
 
