@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import axios from 'axios';
+import {updateGoals} from '../../redux/reducer'
 
 
 class Form extends Component{
@@ -22,7 +23,6 @@ class Form extends Component{
     }
 
     changeGoals = async()=>{
-        const{email} = this.props
         const{calorieGoal, fatGoalPercent, proteinGoalPercent, carbGoalPercent} = this.state
         let userGoals = {
             calorieGoal,
@@ -30,23 +30,18 @@ class Form extends Component{
             proteinGoalPercent,
             carbGoalPercent
         }
-        // console.log(email)
         try{
-            // console.log(userGoals)
+            const{email} = this.props
             let res = await axios.put(`/api/goals/${email}`, userGoals)
-            // console.log(res)
             console.log(res.data)
             console.log(res.data[0])
-            // const{
-            //     email,
-            //     calorieGoal: calorie_goal,
-            //     fatGoalPercent: fat_goal_percent,
-            //     proteinGoalPercent: protein_goal_percent,
-            //     carbGoalPercent: carb_goal_percent   
-            // }=res.data[0]
-
-            // console.log(calorieGoal,fatGoalPercent,proteinGoalPercent,carbGoalPercent)
-            // console.log(calorie_goal,fat_goal_percent,protein_goal_percent,carb_goal_percent)
+            const{
+                calorie_goal,
+                fat_goal_percent,
+                protein_goal_percent,
+                carb_goal_percent   
+            }=res.data[0]
+            console.log(email,calorie_goal,fat_goal_percent,protein_goal_percent,carb_goal_percent)
 
         } catch(err) {
             console.log(err)
@@ -96,4 +91,4 @@ class Form extends Component{
 const mapStateToProps = reduxState => {
     return reduxState
 }
-export default connect(mapStateToProps) (Form);
+export default connect(mapStateToProps,{updateGoals}) (Form); //could have used mapDispatchToProps, but only needed one function.
