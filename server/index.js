@@ -31,5 +31,6 @@ app.post('/auth/login',ctrl.login);
 app.post('/auth/logout',ctrl.logout);
 
 app.get('/api/current', ctrl.getUser)
+app.get('/api/current/goals', ctrl.getGoals)
 
 app.put('/api/goals/:email', ctrl.editGoals)
