@@ -4,12 +4,14 @@ const bodyParser = require('body-parser');
 const sessions = require('express-session');
 const massive = require('massive');
 const ctrl = require('./controller');
+const path = require('path'); //digital ocean hosting instructions from devmtn
 
 const app = express(),
-    {SERVER_PORT,
+{SERVER_PORT,
     CONNECTION_STRING,
     SESSION_SECRET} = process.env;
-
+    
+app.use( express.static( `${__dirname}/../build` ) ) //digital ocean hosting instructions from devmtn
 app.use(bodyParser.json());
 app.use(sessions({
     secret: SESSION_SECRET,
@@ -34,3 +36,7 @@ app.get('/api/current', ctrl.getUser)
 app.get('/api/current/goals', ctrl.getGoals)
 
 app.put('/api/goals/:email', ctrl.editGoals)
+
+app.get('*', (req, res)=>{  //digital ocean hosting instructions from devmtn
+    res.sendFile(path.join(__dirname, '../build/index.html'));
+});
