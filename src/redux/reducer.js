@@ -2,10 +2,11 @@ const initialState = {
     id:0,
     email:'',
     img:'',
-    calorieGoal:"",
-    fatGoalPercent:"",
-    proteinGoalPercent:"",
-    carbGoalPercent:""
+    calorieGoal:0,
+    fatGoalPercent:0,
+    proteinGoalPercent:0,
+    carbGoalPercent:0,
+    showForm:true
 
 
 }
@@ -13,6 +14,7 @@ const initialState = {
 const UPDATE_USER = 'UPDATE_USER';
 const CLEAR_USER = 'CLEAR_USER';
 const UPDATE_GOALS = 'UPDATE_GOALS';
+const TOGGLE_SHOW_FORM = 'TOGGLE_SHOW_FORM';
 
 export function updateUser(user) {
     return {
@@ -34,6 +36,13 @@ export function updateGoals(goals){
     }
 }
 
+export function toggleShowForm(val){
+    return {
+        type: TOGGLE_SHOW_FORM,
+        payload: val
+    }
+}
+
 export default function reducer(state = initialState, action){
     const { type, payload } = action;
     switch(type){
@@ -44,9 +53,11 @@ export default function reducer(state = initialState, action){
         case CLEAR_USER:
             return{...state, id:0, email:''}
         case UPDATE_GOALS:
-        console.log({payload:payload})
             const {calorie_goal, fat_goal_percent, protein_goal_percent, carb_goal_percent} = payload;
             return{...state, calorieGoal: calorie_goal, fatGoalPercent: fat_goal_percent, proteinGoalPercent: protein_goal_percent, carbGoalPercent: carb_goal_percent}
+        case TOGGLE_SHOW_FORM:
+            const {showForm} = payload;
+            return{...state, showForm: !showForm}
         default:
             return state
     }
