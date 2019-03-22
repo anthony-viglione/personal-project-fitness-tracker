@@ -22,6 +22,7 @@ module.exports = {
         session.user = user;
         res.status(200).send(session.user)
     },
+
     login: async(req,res) => {
         // console.log('hit login')
         const {email, password} = req.body;
@@ -55,6 +56,7 @@ module.exports = {
             res.sendStatus(401)
         }
     },
+    
     logout: (req,res) => {
         console.log('DESTROYED')
         req.session.destroy(()=>{
@@ -63,12 +65,8 @@ module.exports = {
     }, 
 
     editGoals: async(req,res) => {
-        // console.log(req.params)
-        // console.log(req.body)
-
         const {email} = req.params;
         const {calorieGoal, fatGoalPercent, proteinGoalPercent, carbGoalPercent} = req.body
-        // console.log(email, calorieGoal, fatGoalPercent, proteinGoalPercent, carbGoalPercent)
 
         const db =req.app.get('db');
         let updatedUser = await db.tracker.update_goals({email, calorieGoal, fatGoalPercent, proteinGoalPercent, carbGoalPercent})
@@ -77,7 +75,6 @@ module.exports = {
     },
 
     getGoals: async(req,res) => {
-        console.log(req.session.user.id)
         const{id}=req.session.user;
         const db =req.app.get('db');
         let goals = await db.tracker.get_goals({id})
