@@ -57,8 +57,9 @@ module.exports = {
     },
     logout: (req,res) => {
         console.log('DESTROYED')
-        req.session.destroy();
-        res.sendStatus(200)
+        req.session.destroy(()=>{
+            res.sendStatus(200) // response must be in the callback to avoid strange bugs
+        });
     }, 
 
     editGoals: async(req,res) => {
