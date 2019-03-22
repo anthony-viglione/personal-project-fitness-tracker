@@ -73,5 +73,18 @@ module.exports = {
         let updatedUser = await db.tracker.update_goals({email, calorieGoal, fatGoalPercent, proteinGoalPercent, carbGoalPercent})
         console.log('changed goals')
         res.status(200).send(updatedUser)
+    },
+
+    getGoals: async(req,res) => {
+        console.log(req.session.user.id)
+        const{id}=req.session.user;
+        const db =req.app.get('db');
+        let goals = await db.tracker.get_goals({id})
+        if(goals) {
+            console.log("got goals")
+            res.status(200).send(goals)
+        } else {
+            res.sendStatus(400)
+        }
     }
 }
