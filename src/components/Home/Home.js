@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import axios from 'axios';
 import { connect } from 'react-redux';
-import {updateUser, clearUser} from './../../redux/reducer';
+import {updateUser, updateGoals, clearUser} from './../../redux/reducer';
 import Form from '../Form/Form';
 
 
@@ -18,7 +18,8 @@ class Home extends Component{
     }
     componentDidMount() {
         this.getUser();
-        // console.log(this.props)
+        this.getGoals();
+        // console.log({homeProps:this.props})
     }
 
     getUser = async ()=> {
@@ -31,6 +32,17 @@ class Home extends Component{
                 // console.log(err)
                 this.props.history.push('/') // comment out for testing Home
             }
+        }
+    }
+
+    getGoals = async ()=> {
+        try{
+            let res = await axios.get('/api/current/goals')
+            // console.log(res.data[0])
+            const{calorie_goal, fat_goal_percent, protein_goal_percent, carb_goal_percent} =res.data[0]
+            this.props.updateGoals({calorie_goal, fat_goal_percent, protein_goal_percent, carb_goal_percent})
+        } catch(err){
+            console.log(err)
         }
     }
 
@@ -48,7 +60,7 @@ class Home extends Component{
 
     render(){
         const {email, img} = this.props
-        const {calorieGoal,fatGoalPercent,proteinGoalPercent,carbGoalPercent} = this.state
+        const {calorieGoal,fatGoalPercent,proteinGoalPercent,carbGoalPercent} = this.props
         const fatGoalGrams =(calorieGoal*(fatGoalPercent*.01)/9).toFixed(0)
         const proteinGoalGrams =(calorieGoal*(proteinGoalPercent*.01)/4).toFixed(0)
         const carbGoalGrams =(calorieGoal*(carbGoalPercent*.01)/4).toFixed(0)
@@ -64,9 +76,7 @@ class Home extends Component{
                 <div style={{display:"flex"}}>
                     <h1 style={{width:"200px"}}>GOALS </h1>
                     <div style={{width:'300px'}}>
-                        {/* <div>Goals</div> */}
                         <div>{calorieGoal} Calories</div>
-                        {/* <div>Macros</div> */}
                         <div style={{display:"flex", justifyContent:"space-between"}}>
                             <div>Fat</div>
                             <div>Protein</div>
@@ -95,10 +105,17 @@ class Home extends Component{
 }
 
 const mapStateToProps = reduxState => {
-    return reduxState
+    return {
+        calorieGoal: reduxState.calorieGoal,
+        fatGoalPercent: reduxState.fatGoalPercent,
+        proteinGoalPercent:reduxState.proteinGoalPercent,
+        carbGoalPercent:reduxState.carbGoalPercent
+
+    }
 }
 const mapDispatchToProps ={ //reducer holds the methods
     updateUser,
+    updateGoals,
     clearUser
 }
 export default connect(mapStateToProps, mapDispatchToProps) (Home);
