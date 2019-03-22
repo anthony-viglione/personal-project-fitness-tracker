@@ -1,7 +1,13 @@
 const initialState = {
     id:0,
     email:'',
-    img:''
+    img:'',
+    calorieGoal:"",
+    fatGoalPercent:"",
+    proteinGoalPercent:"",
+    carbGoalPercent:""
+
+
 }
 
 const UPDATE_USER = 'UPDATE_USER';
@@ -38,8 +44,9 @@ export default function reducer(state = initialState, action){
         case CLEAR_USER:
             return{...state, id:0, email:''}
         case UPDATE_GOALS:
+        console.log({payload:payload})
             const {calorie_goal, fat_goal_percent, protein_goal_percent, carb_goal_percent} = payload;
-            return{...state, calorie_goal, fat_goal_percent, protein_goal_percent, carb_goal_percent}
+            return{...state, calorieGoal: calorie_goal, fatGoalPercent: fat_goal_percent, proteinGoalPercent: protein_goal_percent, carbGoalPercent: carb_goal_percent}
         default:
             return state
     }
