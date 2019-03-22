@@ -33,19 +33,19 @@ class Form extends Component{
         try{
             const{email} = this.props
             let res = await axios.put(`/api/goals/${email}`, userGoals)
-            console.log(res.data)
-            console.log(res.data[0])
+            // console.log(res.data)
+            // console.log(res.data[0])
             const{
                 calorie_goal,
                 fat_goal_percent,
                 protein_goal_percent,
                 carb_goal_percent   
             }=res.data[0]
-            console.log(email,calorie_goal,fat_goal_percent,protein_goal_percent,carb_goal_percent)
+            console.log(email, calorie_goal, fat_goal_percent, protein_goal_percent, carb_goal_percent)
+            this.props.updateGoals({email, calorie_goal, fat_goal_percent, protein_goal_percent, carb_goal_percent})
 
         } catch(err) {
             console.log(err)
-            alert(`something went wrong with the changeGoals method in Form`)
         }
     }
 
