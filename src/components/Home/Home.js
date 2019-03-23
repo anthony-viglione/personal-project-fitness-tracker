@@ -19,8 +19,6 @@ class Home extends Component{
     componentDidMount() {
         this.getUser();
         this.getGoals();
-        console.log(this.props)
-        // console.log({homeProps:this.props})
     }
 
     getUser = async ()=> {
