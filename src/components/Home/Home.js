@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import axios from 'axios';
 import { connect } from 'react-redux';
-import {updateUser, updateGoals, clearUser} from './../../redux/reducer';
+import {updateUser, updateGoals, clearUser, toggleShowForm} from './../../redux/reducer';
 import Form from '../Form/Form';
 
 
@@ -9,11 +9,11 @@ class Home extends Component{
     constructor(){
         super()
         this.state={
-            calorieGoal:2000,
-            fatGoalPercent:20,
-            proteinGoalPercent:40,
-            carbGoalPercent:40,
-            showEdit:true
+            calorieGoal:0,
+            fatGoalPercent:0,
+            proteinGoalPercent:0,
+            carbGoalPercent:0,
+            showForm:true
         }
     }
     componentDidMount() {
@@ -52,19 +52,12 @@ class Home extends Component{
         this.props.history.push('/')
     }
 
-    handleShowEdit=(val) => {
-        this.setState({
-            showEdit:!val
-        })
-    }
-
     render(){
-        const {email, img} = this.props
-        const {calorieGoal,fatGoalPercent,proteinGoalPercent,carbGoalPercent} = this.props
+        const {email, img, calorieGoal, fatGoalPercent, proteinGoalPercent, carbGoalPercent, showForm} = this.props
         const fatGoalGrams =(calorieGoal*(fatGoalPercent*.01)/9).toFixed(0)
         const proteinGoalGrams =(calorieGoal*(proteinGoalPercent*.01)/4).toFixed(0)
         const carbGoalGrams =(calorieGoal*(carbGoalPercent*.01)/4).toFixed(0)
-        const toggleButton = !this.state.showEdit ? "Change Goals" : "Done";
+        const toggleButton = showForm ? "Done" : "Change Goals";
         return(
             <div style={{display:"flex", alignItems:"center", flexDirection:"column"}}>
                 <h1>Home Page</h1>
@@ -94,11 +87,10 @@ class Home extends Component{
                         </div>
                     </div>
                     <h1>
-                        {!this.state.showEdit && <button onClick={e => this.handleShowEdit(this.state.showEdit)}>{toggleButton}</button>}
-                        <button onClick={e => this.handleShowEdit(this.state.showEdit)}>{toggleButton}</button>
+                        {!showForm && <button onClick={e => this.props.toggleShowForm({showForm})}>{toggleButton}</button>}
                     </h1>
                 </div>
-                {this.state.showEdit && <Form/>}
+                {showForm && <Form/>}
             </div>
         )
     }
@@ -108,14 +100,18 @@ const mapStateToProps = reduxState => {
     return {
         calorieGoal: reduxState.calorieGoal,
         fatGoalPercent: reduxState.fatGoalPercent,
-        proteinGoalPercent:reduxState.proteinGoalPercent,
-        carbGoalPercent:reduxState.carbGoalPercent
+        proteinGoalPercent: reduxState.proteinGoalPercent,
+        carbGoalPercent: reduxState.carbGoalPercent,
+        showForm: reduxState.showForm,
+        email: reduxState.email,
+        img: reduxState.img
 
     }
 }
 const mapDispatchToProps ={ //reducer holds the methods
     updateUser,
     updateGoals,
-    clearUser
+    clearUser,
+    toggleShowForm
 }
 export default connect(mapStateToProps, mapDispatchToProps) (Home);
