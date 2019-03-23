@@ -1,10 +1,10 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import axios from 'axios';
-import {updateGoals, toggleShowForm} from '../../redux/reducer'
+import {updateGoals, toggleShowGoalForm} from '../../redux/reducer'
 
 
-class Form extends Component{
+class GoalForm extends Component{
     constructor(){
         super()
         this.state={
@@ -60,9 +60,9 @@ class Form extends Component{
     }
 
     handleFireTwoFunctions = async () => {
-        const{showForm} = this.props
+        const{showGoalForm} = this.props
         await this.changeGoals()
-        this.props.toggleShowForm({showForm})
+        this.props.toggleShowGoalForm({showGoalForm})
     }
 
     render(){
@@ -72,7 +72,7 @@ class Form extends Component{
         return(
             <div>
                 <div>
-                    Form Component
+                    GoalForm Component
                 </div>
                 <div>
                     <div>
@@ -106,11 +106,11 @@ class Form extends Component{
 const mapStateToProps = reduxState => {
     return {
         email: reduxState.email,
-        showForm: reduxState.showForm,
+        showGoalForm: reduxState.showGoalForm,
         calorieGoal: reduxState.calorieGoal, 
         fatGoalPercent: reduxState.fatGoalPercent, 
         proteinGoalPercent: reduxState.proteinGoalPercent, 
         carbGoalPercent: reduxState.carbGoalPercent
     }
 }
-export default connect(mapStateToProps,{updateGoals, toggleShowForm}) (Form); //could have used mapDispatchToProps, but only needed one function.
+export default connect(mapStateToProps,{updateGoals, toggleShowGoalForm}) (GoalForm); //could have used mapDispatchToProps, but only needed one function.

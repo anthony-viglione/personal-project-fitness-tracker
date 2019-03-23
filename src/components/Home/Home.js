@@ -1,8 +1,8 @@
 import React, {Component} from 'react';
 import axios from 'axios';
 import { connect } from 'react-redux';
-import {updateUser, updateGoals, clearUser, toggleShowForm} from './../../redux/reducer';
-import Form from '../Form/Form';
+import {updateUser, updateGoals, clearUser, toggleShowGoalForm} from './../../redux/reducer';
+import GoalForm from '../GoalForm/GoalForm';
 
 
 class Home extends Component{
@@ -13,12 +13,13 @@ class Home extends Component{
             fatGoalPercent:0,
             proteinGoalPercent:0,
             carbGoalPercent:0,
-            showForm:true
+            showGoalForm:true
         }
     }
     componentDidMount() {
         this.getUser();
         this.getGoals();
+        console.log(this.props)
         // console.log({homeProps:this.props})
     }
 
@@ -53,11 +54,11 @@ class Home extends Component{
     }
 
     render(){
-        const {email, img, calorieGoal, fatGoalPercent, proteinGoalPercent, carbGoalPercent, showForm} = this.props
+        const {email, img, calorieGoal, fatGoalPercent, proteinGoalPercent, carbGoalPercent, showGoalForm} = this.props
         const fatGoalGrams =(calorieGoal*(fatGoalPercent*.01)/9).toFixed(0)
         const proteinGoalGrams =(calorieGoal*(proteinGoalPercent*.01)/4).toFixed(0)
         const carbGoalGrams =(calorieGoal*(carbGoalPercent*.01)/4).toFixed(0)
-        const toggleButton = showForm ? "Done" : "Change Goals";
+        const toggleButton = showGoalForm ? "Done" : "Change Goals";
         return(
             <div style={{display:"flex", alignItems:"center", flexDirection:"column"}}>
                 <h1>Home Page</h1>
@@ -87,10 +88,10 @@ class Home extends Component{
                         </div>
                     </div>
                     <h1>
-                        {!showForm && <button onClick={e => this.props.toggleShowForm({showForm})}>{toggleButton}</button>}
+                        {!showGoalForm && <button onClick={e => this.props.toggleShowGoalForm({showGoalForm})}>{toggleButton}</button>}
                     </h1>
                 </div>
-                {showForm && <Form/>}
+                {showGoalForm && <GoalForm/>}
             </div>
         )
     }
@@ -102,7 +103,8 @@ const mapStateToProps = reduxState => {
         fatGoalPercent: reduxState.fatGoalPercent,
         proteinGoalPercent: reduxState.proteinGoalPercent,
         carbGoalPercent: reduxState.carbGoalPercent,
-        showForm: reduxState.showForm,
+        showGoalForm: reduxState.showGoalForm,
+        test: reduxState.test,
         email: reduxState.email,
         img: reduxState.img
 
@@ -112,6 +114,6 @@ const mapDispatchToProps ={ //reducer holds the methods
     updateUser,
     updateGoals,
     clearUser,
-    toggleShowForm
+    toggleShowGoalForm
 }
 export default connect(mapStateToProps, mapDispatchToProps) (Home);
