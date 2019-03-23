@@ -1,0 +1,14 @@
+.titleBox{
+    width: 80vw;
+    height: 20vh;
+    border:solid black;
+    margin-top: 5vh;
+    margin-bottom: 5vh;
+  }
+  
+  .loginBox{
+    width: 80vw;
+    height: 20vh;
+    border:solid black;
+  }
+  
