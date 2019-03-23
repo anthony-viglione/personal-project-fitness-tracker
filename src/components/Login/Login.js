@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import axios from 'axios';
 import {connect} from 'react-redux';
 import {updateUser} from './../../redux/reducer';
+import './Login.css';
 
 class Login extends Component{
     constructor(){
@@ -72,18 +73,23 @@ class Login extends Component{
         // console.log({password:password})
         // console.log({email:email})
         return(
-            <div>Login Component
-                <div>
-                    <div>Email</div>
-                    <input value={email} onChange={e => this.handleChange('email', e.target.value)}/>
+            <div>
+                <div className="titleBox">
+                    <h1>Fitness Tracker</h1>
                 </div>
-                <div>
-                    <div>Password</div>
-                    <input type='password' value={password} onChange={e => this.handleChange('password', e.target.value)}/>
-                </div>
-                <div>
-                    <button onClick={this.login}>Login</button>
-                    <button onClick={()=>{this.register()}}>Register</button>
+                <div className="loginBox">
+                    <div className="emailBox">
+                        <div>Email</div>
+                        <input value={email} onChange={e => this.handleChange('email', e.target.value)}/>
+                    </div>
+                    <div className="passwordBox">
+                        <div>Password</div>
+                        <input type='password' value={password} onChange={e => this.handleChange('password', e.target.value)}/>
+                    </div>
+                    <div className="buttonBox">
+                        <button onClick={this.login}>Login</button>
+                        <button onClick={()=>{this.register()}}>Register</button>
+                    </div>
                 </div>
             </div>
         )
