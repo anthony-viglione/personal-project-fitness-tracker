@@ -85,10 +85,6 @@ class Login extends Component{
                     <button onClick={this.login}>Login</button>
                     <button onClick={()=>{this.register()}}>Register</button>
                 </div>
-                <div>
-                    <h3>TEST</h3>
-                    <input onChange={()=>{console.log(this)}}/>
-                </div>
             </div>
         )
     }
