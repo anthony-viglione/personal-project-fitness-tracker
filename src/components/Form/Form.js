@@ -1,19 +1,29 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import axios from 'axios';
-import {updateGoals} from '../../redux/reducer'
+import {updateGoals, toggleShowForm} from '../../redux/reducer'
 
 
 class Form extends Component{
     constructor(){
         super()
         this.state={
-            calorieGoal:"",
-            fatGoalPercent:"",
-            proteinGoalPercent:"",
-            carbGoalPercent:"",
+            calorieGoal:0,
+            fatGoalPercent:0,
+            proteinGoalPercent:0,
+            carbGoalPercent:0,
             button:false
         }
+    }
+
+    componentDidMount(){
+        const{calorieGoal, fatGoalPercent, proteinGoalPercent, carbGoalPercent} = this.props
+        this.setState({
+            calorieGoal,
+            fatGoalPercent,
+            proteinGoalPercent,
+            carbGoalPercent
+        })
     }
 
     handleInput(prop, val) {
@@ -49,8 +59,14 @@ class Form extends Component{
         }
     }
 
+    handleFireTwoFunctions = async () => {
+        const{showForm} = this.props
+        await this.changeGoals()
+        this.props.toggleShowForm({showForm})
+    }
+
     render(){
-        const{calorieGoal, fatGoalPercent, proteinGoalPercent, carbGoalPercent} = this.state
+        const{calorieGoal, fatGoalPercent, proteinGoalPercent, carbGoalPercent} = this.props
         // console.log(calorieGoal, fatGoalPercent,proteinGoalPercent,carbGoalPercent)
         // console.log(this)
         return(
@@ -61,34 +77,40 @@ class Form extends Component{
                 <div>
                     <div>
                         Calorie Goal
-                        <input value={calorieGoal} onChange={e => this.handleInput('calorieGoal', e.target.value)}/>
+                        <input placeholder={calorieGoal} onChange={e => this.handleInput('calorieGoal', e.target.value)}/>
                     </div>
                     <div>
                         Fat Goal
-                        <input value={fatGoalPercent}  onChange={e => this.handleInput('fatGoalPercent', e.target.value)}/>
+                        <input placeholder={fatGoalPercent}  onChange={e => this.handleInput('fatGoalPercent', e.target.value)}/>
                     </div>
                     <div>
                         Protein Goal
-                        <input value={proteinGoalPercent} onChange={e => this.handleInput('proteinGoalPercent', e.target.value)}/>
+                        <input placeholder={proteinGoalPercent} onChange={e => this.handleInput('proteinGoalPercent', e.target.value)}/>
                     </div>
                     <div>
                         Carb Goal
-                        <input value={carbGoalPercent} onChange={e => this.handleInput('carbGoalPercent', e.target.value)}/>
+                        <input placeholder={carbGoalPercent} onChange={e => this.handleInput('carbGoalPercent', e.target.value)}/>
                         </div>
                 </div>
                 <div>
-                    <button onClick={()=>console.log(calorieGoal,fatGoalPercent,proteinGoalPercent,carbGoalPercent)}>Check State</button>
+                    {/* <button onClick={()=>console.log(calorieGoal,fatGoalPercent,proteinGoalPercent,carbGoalPercent)}>Check State</button> */}
                 </div>
                 <div>
-                    <button onClick={()=>this.changeGoals()}>ChangeGoals</button>
+                    <button onClick={()=>this.handleFireTwoFunctions()}>ChangeGoals</button>
                 </div>
-                {/* <div>{this.state.button && <button></button>}</div> */}
             </div>
         )
     }
 }
 
 const mapStateToProps = reduxState => {
-    return reduxState
+    return {
+        email: reduxState.email,
+        showForm: reduxState.showForm,
+        calorieGoal: reduxState.calorieGoal, 
+        fatGoalPercent: reduxState.fatGoalPercent, 
+        proteinGoalPercent: reduxState.proteinGoalPercent, 
+        carbGoalPercent: reduxState.carbGoalPercent
+    }
 }
-export default connect(mapStateToProps,{updateGoals}) (Form); //could have used mapDispatchToProps, but only needed one function.
+export default connect(mapStateToProps,{updateGoals, toggleShowForm}) (Form); //could have used mapDispatchToProps, but only needed one function.
