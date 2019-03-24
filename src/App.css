@@ -10,8 +10,14 @@ gray #E1DDDB
     background-image:linear-gradient(#EF6C33,#ABDFF1,#ABDFF1);
     width:100vw;
     height:100vh;
-    
   }
+  .goalCardOuter{
+    height: 175px;
+
+  }
+  .goalButton{
+    margin-top: 15px;
+}
 }
 
 @media screen and (max-width: 360px){
@@ -20,6 +26,13 @@ gray #E1DDDB
     width:360px;
     height:740px;
   }
+  .goalCardOuter{
+    height: 150px;
+
+  }
+  .goalButton{
+    margin-top: 5px;
+}
   
 }
 /* keep universal */
@@ -103,7 +116,6 @@ button{
 
 .goalCardOuter{
     width: 350px;
-    height: 150px;
     border: solid #0C4A60;
     border-radius:5px;
     color: #0C4A60;
@@ -126,9 +138,7 @@ button{
 .goal{
     font-weight: bold;
 }
-.goalButton{
-    margin-top: 5px;
-}
+
 
 button{
     margin: 0px 0px 5px 0px ;
