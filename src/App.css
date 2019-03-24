@@ -1,25 +1,25 @@
 @media screen and (min-width: 361px) {
   .App {
-    text-align: center;
-    background-image:linear-gradient(#ABDFF1,#ABDFF1,#EF6C33);
     width:100vw;
     height:100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    
   }
 }
 
 @media screen and (max-width: 360px){
   .App {
-    text-align: center;
-    background-image:linear-gradient(#ABDFF1,#ABDFF1,#EF6C33);
     width:360px;
     height:740px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
   }
+}
+
+.App{
+  text-align: center;
+  background-image:linear-gradient(#ABDFF1,#ABDFF1,#EF6C33);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  
 }
 
 input{
