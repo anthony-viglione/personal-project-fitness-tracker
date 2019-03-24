@@ -20,8 +20,9 @@ gray #E1DDDB
     width:360px;
     height:740px;
   }
+  
 }
-
+/* keep universal */
 .App{
   text-align: center;
   display: flex;
@@ -42,3 +43,41 @@ button{
     border-radius: 5px;
     color:#0C4A60;
 }
+
+  /* Potential make conditional */
+
+  .titleBox{
+    width: 300px;
+    height: 150px;
+    border:solid #0C4A60;
+    border-radius:5px;
+    margin-top: 5vh;
+    margin-bottom: 5vh;
+    color:#0C4A60;
+  }
+  
+  .loginBox{
+    width: 300px;
+    height: 150px;
+    border: solid #0C4A60;
+    border-radius:5px;
+    color: #0C4A60;
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .loginBox > div{
+    display: flex;
+    padding: 15px 0px 0px 0px;
+    font-weight: bold;
+  }
+  .emailBox > div{
+    padding-right: 36px;
+  }
+  .passwordBox > div{
+    padding-right: 5px
+  }
+  .buttonBox > button{
+    width: 100px;
+    margin: 10px 30px 10px 30px;
+  }
