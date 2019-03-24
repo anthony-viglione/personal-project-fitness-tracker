@@ -11,8 +11,7 @@ class GoalForm extends Component{
             calorieGoal:0,
             fatGoalPercent:0,
             proteinGoalPercent:0,
-            carbGoalPercent:0,
-            button:false
+            carbGoalPercent:0
         }
     }
 
