@@ -1,5 +1,6 @@
 @media screen and (min-width: 361px) {
   .App {
+    background-image:linear-gradient(#EF6C33,#ABDFF1,#ABDFF1);
     width:100vw;
     height:100vh;
     
@@ -8,6 +9,7 @@
 
 @media screen and (max-width: 360px){
   .App {
+    background-image:linear-gradient(#ABDFF1,#ABDFF1,#EF6C33);
     width:360px;
     height:740px;
   }
@@ -15,7 +17,6 @@
 
 .App{
   text-align: center;
-  background-image:linear-gradient(#ABDFF1,#ABDFF1,#EF6C33);
   display: flex;
   flex-direction: column;
   align-items: center;
