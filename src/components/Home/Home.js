@@ -3,6 +3,7 @@ import axios from 'axios';
 import { connect } from 'react-redux';
 import {updateUser, updateGoals, clearUser, toggleShowGoalForm} from './../../redux/reducer';
 import GoalForm from '../GoalForm/GoalForm';
+import './Home.css';
 
 
 class Home extends Component{
@@ -58,38 +59,46 @@ class Home extends Component{
         const carbGoalGrams =(calorieGoal*(carbGoalPercent*.01)/4).toFixed(0)
         const toggleButton = showGoalForm ? "Done" : "Change Goals";
         return(
-            <div style={{display:"flex", alignItems:"center", flexDirection:"column"}}>
-                <h1>Home Page</h1>
-                <div>
-                    <h3>{email}</h3>
-                    <button onClick={this.logout}>Logout</button>
-                </div>
-                <img src={img} alt='' style={{width:'25%', height:'auto'}}/>
-                <div style={{display:"flex"}}>
-                    <h1 style={{width:"200px"}}>GOALS </h1>
-                    <div style={{width:'300px'}}>
-                        <div>{calorieGoal} Calories</div>
-                        <div style={{display:"flex", justifyContent:"space-between"}}>
-                            <div>Fat</div>
-                            <div>Protein</div>
-                            <div>Carb</div>
-                        </div>
-                        <div style={{display:"flex", justifyContent:"space-between"}}>
-                            <div>{fatGoalPercent}</div>
-                            <div>{proteinGoalPercent}</div>
-                            <div>{carbGoalPercent}</div>
-                        </div>
-                        <div style={{display:"flex", justifyContent:"space-between"}}>
-                            <div>{fatGoalGrams}</div>
-                            <div>{proteinGoalGrams}</div>
-                            <div>{carbGoalGrams}</div>
-                        </div>
+            <div >
+                <div className="titleBanner">Fitness Tracker</div>
+                <div className="userCard">
+                    <div>
+                        <img className="userImg" src={img} alt='' />
+                        <div>{email}</div>
                     </div>
-                    <h1>
-                        {!showGoalForm && <button onClick={e => this.props.toggleShowGoalForm({showGoalForm})}>{toggleButton}</button>}
-                    </h1>
+                        <div>
+                        <button onClick={this.logout}>Logout</button>
+                        </div>
                 </div>
-                {showGoalForm && <GoalForm/>}
+
+                <div className="goalCardOuter">
+                    <div className="goalCardTitle" >DAILY GOALS </div>
+                        <div className="goalCardInner">
+                            <div className="goal">{calorieGoal} Calories</div>
+                            <div className="goalBar">
+                                <div className="goal">Fat</div>
+                                <div className="goal">Protein</div>
+                                <div className="goal">Carb</div>
+                            </div>
+                            <div className="goalBar">
+                                <div>{fatGoalPercent}</div>
+                                <div>{proteinGoalPercent}</div>
+                                <div>{carbGoalPercent}</div>
+                            </div>
+                            <div className="goalBar">
+                                <div>{fatGoalGrams}g</div>
+                                <div>{proteinGoalGrams}g</div>
+                                <div>{carbGoalGrams}g</div>
+                            </div>
+                        </div>
+                    <div className="goalButton">
+                        {!showGoalForm && <button onClick={e => this.props.toggleShowGoalForm({showGoalForm})}>{toggleButton}</button>}
+                    </div>
+                </div>
+
+                <div>
+                    {showGoalForm && <GoalForm/>}
+                </div>
             </div>
         )
     }
