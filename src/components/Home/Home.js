@@ -3,7 +3,6 @@ import axios from 'axios';
 import { connect } from 'react-redux';
 import {updateUser, updateGoals, clearUser, toggleShowGoalForm} from './../../redux/reducer';
 import GoalForm from '../GoalForm/GoalForm';
-import './Home.css';
 
 
 class Home extends Component{
