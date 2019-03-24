@@ -1,3 +1,10 @@
+/* 
+COLOR_PALETTE
+teal #0C4A60
+coral #EF6C33
+ice blue #ABDFF1
+gray #E1DDDB
+*/
 @media screen and (min-width: 361px) {
   .App {
     background-image:linear-gradient(#EF6C33,#ABDFF1,#ABDFF1);
