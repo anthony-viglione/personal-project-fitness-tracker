@@ -44,7 +44,7 @@ button{
     color:#0C4A60;
 }
 
-  /* Potentially make conditional; Styling for Home component */
+  /* Potentially make conditional; Styling for Login component */
 
   .titleBox{
     width: 300px;
@@ -81,3 +81,55 @@ button{
     width: 100px;
     margin: 10px 30px 10px 30px;
   }
+
+  /* Potentially make conditional; Styling for Home component */
+
+  .titleBanner{
+    font-weight:bolder;
+    font-size: 2em;
+    color:#0C4A60 ;
+}
+.userCard{
+    display:flex;
+    justify-content: space-between;
+    height: 100px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+.userImg{
+    width: 75px;
+    height: 75px;
+}
+
+.goalCardOuter{
+    width: 350px;
+    height: 150px;
+    border: solid #0C4A60;
+    border-radius:5px;
+    color: #0C4A60;
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+}
+.goalCardTitle{
+    font-weight: bold;
+    font-size: 1.5em;
+    margin: 5px 0px 5px 0;
+}
+.goalCardInner{
+    width:300px;
+}
+.goalBar{
+    display:flex;
+    justify-content: space-between;
+}
+.goal{
+    font-weight: bold;
+}
+.goalButton{
+    margin-top: 5px;
+}
+
+button{
+    margin: 0px 0px 5px 0px ;
+}
