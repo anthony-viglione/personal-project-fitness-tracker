@@ -1,14 +1,62 @@
+/* 
+color palette
+teal #0C4A60
+coral #EF6C33
+ice blue #ABDFF1
+gray #E1DDDB
+*/
+
 .titleBox{
-    width: 80vw;
-    height: 20vh;
-    border:solid black;
+    width: 300px;
+    height: 150px;
+    border:solid #0C4A60;
+    border-radius:5px;
     margin-top: 5vh;
     margin-bottom: 5vh;
+    color:#0C4A60;
   }
   
   .loginBox{
-    width: 80vw;
-    height: 20vh;
-    border:solid black;
+    width: 300px;
+    height: 150px;
+    border: solid #0C4A60;
+    border-radius:5px;
+    color: #0C4A60;
+    display:flex;
+    flex-direction: column;
+    align-items: center;
   }
+
+  .loginBox > input{
+    width: 200px;
+    border-radius: 50%
+  }
+  .loginBox > div{
+    display: flex;
+    padding: 15px 0px 0px 0px;
+    font-weight: bold;
+  }
+  .loginInput{
+    border-radius: 5px;
+    background-color:#E1DDDB;
+    color:#0C4A60;
+  }
+
+  .emailBox > div{
+    padding-right: 36px;
+  }
+
+  .passwordBox > div{
+    padding-right: 5px
+  }
+
+  .buttonBox > button{
+    font-weight: bolder;
+    font-size: 1em;
+    width: 100px;
+    margin: 10px 30px 10px 30px;
+    border-radius: 5px;
+    color:#0C4A60;
+  }
+
   
