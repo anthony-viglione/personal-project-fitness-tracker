@@ -80,11 +80,11 @@ class Login extends Component{
                 <div className="loginBox">
                     <div className="emailBox">
                         <div>Email</div>
-                        <input value={email} onChange={e => this.handleChange('email', e.target.value)}/>
+                        <input className="loginInput" value={email} onChange={e => this.handleChange('email', e.target.value)}/>
                     </div>
                     <div className="passwordBox">
                         <div>Password</div>
-                        <input type='password' value={password} onChange={e => this.handleChange('password', e.target.value)}/>
+                        <input className="loginInput" type='password' value={password} onChange={e => this.handleChange('password', e.target.value)}/>
                     </div>
                     <div className="buttonBox">
                         <button onClick={this.login}>Login</button>
