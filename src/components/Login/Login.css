@@ -27,10 +27,6 @@ gray #E1DDDB
     align-items: center;
   }
 
-  .loginBox > input{
-    width: 200px;
-    border-radius: 50%
-  }
   .loginBox > div{
     display: flex;
     padding: 15px 0px 0px 0px;
