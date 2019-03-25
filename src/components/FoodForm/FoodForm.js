@@ -24,6 +24,7 @@ class FoodForm extends Component{
 
     addFood = async()=>{
         const{food, calories, protein, carb, fat} = this.state
+        const{id} = this.props
         let newFood = {
             food,
             calories,
@@ -39,7 +40,6 @@ class FoodForm extends Component{
     }
     
     render(){
-        
         const{showFoodForm} = this.props
         const{food, calories, protein, carb, fat} = this.state
         return(
@@ -92,7 +92,8 @@ class FoodForm extends Component{
 
 const mapStateToProps = reduxState => {
     return {
-        showFoodForm: reduxState.showFoodForm
+        showFoodForm: reduxState.showFoodForm,
+        id: reduxState.id
     }
 }
 
