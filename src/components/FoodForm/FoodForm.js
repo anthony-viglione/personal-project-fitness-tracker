@@ -39,6 +39,17 @@ class FoodForm extends Component{
             console.log(err)
         }
     }
+
+    handleFireTwoFunctions = async () => {
+        await this.addFood()
+        this.setState({
+            food:'',
+            calories:0,
+            protein:0,
+            carb:0,
+            fat:0
+        })
+    }
     
     render(){
         const{showFoodForm} = this.props
