@@ -52,11 +52,25 @@ input{
 
 button{
   font-weight: bolder;
-    font-size: 1em;
-    border-radius: 5px;
-    color:#0C4A60;
+  font-size: 1em;
+  border-radius: 5px;
+  color:#0C4A60;
 }
 
+.card{
+  width: 350px;
+  border: solid #0C4A60;
+  border-radius:5px;
+  color: #0C4A60;
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.goalBar{
+  display:flex;
+  justify-content: space-between;
+}
   /* Potentially make conditional; Styling for Login component */
 
   .titleBox{
@@ -101,20 +115,20 @@ button{
     font-weight:bolder;
     font-size: 2em;
     color:#0C4A60 ;
-}
-.userCard{
+  }
+  .userCard{
     display:flex;
     justify-content: space-between;
     height: 100px;
     padding-top: 20px;
-    padding-bottom: 20px;
-}
-.userImg{
+    padding-bottom: 15px;
+  }
+  .userImg{
     width: 75px;
     height: 75px;
-}
+  }
 
-.goalCardOuter{
+  .goalCardOuter{
     width: 350px;
     border: solid #0C4A60;
     border-radius:5px;
@@ -122,24 +136,21 @@ button{
     display:flex;
     flex-direction: column;
     align-items: center;
-}
-.goalCardTitle{
+    margin-bottom:15px;
+  }
+  .goalCardTitle{
     font-weight: bold;
     font-size: 1.5em;
     margin: 5px 0px 5px 0;
-}
-.goalCardInner{
+  }
+  .goalCardInner{
     width:300px;
-}
-.goalBar{
-    display:flex;
-    justify-content: space-between;
-}
-.goal{
+  }
+
+  .goal{
     font-weight: bold;
-}
+  }
 
-
-button{
+  button{
     margin: 0px 0px 5px 0px ;
-}
+  }
