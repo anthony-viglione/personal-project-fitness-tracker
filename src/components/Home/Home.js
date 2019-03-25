@@ -54,10 +54,6 @@ class Home extends Component{
         this.props.history.push('/')
     }
 
-    test() {
-        console.log(this.props.showFoodForm)
-    }
-
     render(){
         // console.log(this.props)
         const {email, img, calorieGoal, fatGoalPercent, proteinGoalPercent, carbGoalPercent, showGoalForm, showFoodForm} = this.props
@@ -109,7 +105,6 @@ class Home extends Component{
                 </div>
 
                 <div className="card">
-                    <button onClick={e=>this.test({showFoodForm})}>Test</button>
                     <button onClick={e=>this.props.toggleShowFoodForm({showFoodForm})}>Add Foods</button>
                     {showFoodForm && <FoodForm/>}
                 </div>
