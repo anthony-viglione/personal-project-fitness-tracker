@@ -18,6 +18,9 @@ gray #E1DDDB
   .goalButton{
     margin-top: 15px;
 }
+.FoodFormGoalBarHolder{
+  margin:20px 20px;
+}
 }
 
 @media screen and (max-width: 360px){
@@ -33,7 +36,10 @@ gray #E1DDDB
   .goalButton{
     margin-top: 5px;
 }
+.FoodFormGoalBarHolder{
+  margin: 10px 10px;
   
+}
 }
 /* keep universal */
 .App{
@@ -89,7 +95,7 @@ button{
   background-color: #ABDFF1;
   color: #0C4A60;
   margin: 15% auto; /* 15% from the top and centered */
-  padding: 20px;
+  /* padding: 20px; */
   border: 1px solid #0C4A60;
   width: 80%; /* Could be more or less, depending on screen size */
 }
@@ -183,3 +189,10 @@ button{
   button{
     margin: 0px 0px 5px 0px ;
   }
+
+
+  /* Potentially make conditional; Styling for FoodForm component */
+
+  /* .FoodFormGoalBarHolder{
+    margin:20px 20px;
+  } */
