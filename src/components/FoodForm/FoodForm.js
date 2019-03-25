@@ -6,12 +6,24 @@ class FoodForm extends Component{
     constructor(){
         super()
         this.state={
-
+            food:'',
+            calories:0,
+            protein:0,
+            carb:0,
+            fat:0
         }
     }
 
+    handleInput(prop, val) {
+        this.setState({
+            [prop]:val
+        })
+        console.log({[prop]:this.state[prop]})
+    }
+    
     render(){
         const{showFoodForm} = this.props
+        const{food, calories, protein, carb, fat} = this.state
         return(
             <div className="modal">
                 <div className="modalContent">
@@ -22,31 +34,31 @@ class FoodForm extends Component{
                             <div className='goal'>
                                 Food
                             </div>
-                            <input/>
+                            <input placeholder={food} onChange={e => this.handleInput('food', e.target.value)}/>
                         </div>
                         <div className='goalBar'>
                             <div className='goal'>
                                 Calories
                             </div>
-                            <input/>
+                            <input placeholder={calories} onChange={e => this.handleInput('calories', e.target.value)}/>
                         </div>
                         <div className='goalBar'>
                             <div className='goal'>
                                 Protein
                             </div>
-                            <input/>
+                            <input placeholder={protein} onChange={e => this.handleInput('protein', e.target.value)}/>
                         </div>
                         <div className='goalBar'>
                             <div className='goal'>
                                 Carb
                             </div>
-                            <input/>
+                            <input placeholder={carb} onChange={e => this.handleInput('carb', e.target.value)}/>
                         </div>
                         <div className='goalBar'>
                             <div className='goal'>
                                 Fat
                             </div>
-                            <input/>
+                            <input placeholder={fat} onChange={e => this.handleInput('fat', e.target.value)}/>
                         </div>
                         <div>
                             <button>
