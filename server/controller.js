@@ -85,7 +85,7 @@ module.exports = {
             res.sendStatus(400)
         }
     },
-
+    
     addFood: async(req,res) => {
         // console.log('hit addFood')
         // console.log(req.body)
@@ -99,5 +99,14 @@ module.exports = {
         console.log({userFoodsIds:foodId})
         res.sendStatus(200)
 
+    },
+    getFoods: async(req,res) => {
+        console.log('controller foods')
+        const {id} = req.session.user;
+        console.log(id)
+
+        const db = req.app.get('db');
+        let foods = await db.tracker.get_foods({id})
+        res.status(200).send(foods)
     }
 }
