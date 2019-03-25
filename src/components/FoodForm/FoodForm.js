@@ -33,7 +33,8 @@ class FoodForm extends Component{
             fat
         }
         try{
-
+            let res = await axios.post(`/api/addFood/id${id}`, newFood)
+            console.log(res.data)
         }catch(err) {
             console.log(err)
         }
