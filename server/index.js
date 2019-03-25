@@ -32,11 +32,13 @@ app.post('/auth/register', ctrl.register);
 app.post('/auth/login',ctrl.login);
 app.post('/auth/logout',ctrl.logout);
 
-app.get('/api/current', ctrl.getUser)
-app.get('/api/current/goals', ctrl.getGoals)
+app.get('/api/current', ctrl.getUser);
+app.get('/api/current/goals', ctrl.getGoals);
 
-app.put('/api/goals/:email', ctrl.editGoals)
+app.put('/api/goals/:email', ctrl.editGoals);
 
 app.get('*', (req, res)=>{  //digital ocean hosting instructions from devmtn
     res.sendFile(path.join(__dirname, '../build/index.html'));
 });
+
+app.post('/api/addFood', ctrl.addFood);
