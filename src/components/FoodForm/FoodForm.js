@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {toggleShowFoodForm} from '../../redux/reducer';
+import axios from 'axios';
 
 class FoodForm extends Component{
     constructor(){
@@ -20,8 +21,25 @@ class FoodForm extends Component{
         })
         console.log({[prop]:this.state[prop]})
     }
+
+    addFood = async()=>{
+        const{food, calories, protein, carb, fat} = this.state
+        let newFood = {
+            food,
+            calories,
+            protein,
+            carb,
+            fat
+        }
+        try{
+
+        }catch(err) {
+            console.log(err)
+        }
+    }
     
     render(){
+        
         const{showFoodForm} = this.props
         const{food, calories, protein, carb, fat} = this.state
         return(
