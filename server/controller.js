@@ -84,5 +84,10 @@ module.exports = {
         } else {
             res.sendStatus(400)
         }
+    },
+
+    addFood: async(req,res) => {
+        console.log('hit addFood')
+        console.log(req.body)
     }
 }
