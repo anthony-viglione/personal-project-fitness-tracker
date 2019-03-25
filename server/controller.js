@@ -87,8 +87,17 @@ module.exports = {
     },
 
     addFood: async(req,res) => {
-        console.log('hit addFood')
-        console.log(req.body)
-        console.log(req.params)
+        // console.log('hit addFood')
+        // console.log(req.body)
+        // console.log(req.params)
+        const{food, calories, protein, carb, fat} = req.body
+        let id = req.params.id.split('d')[1]
+        console.log({userId:id})
+
+        const db = req.app.get('db');
+        let foodId = await db.tracker.add_food({id, food, calories, protein, carb, fat})
+        console.log({userFoodsIds:foodId})
+        res.sendStatus(200)
+
     }
 }
