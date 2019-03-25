@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import {updateUser, updateGoals, clearUser, toggleShowGoalForm, toggleShowFoodForm} from './../../redux/reducer';
 import GoalForm from '../GoalForm/GoalForm';
 import FoodForm from '../FoodForm/FoodForm';
+import FoodList from '../FoodList/FoodList';
 
 
 class Home extends Component{
@@ -69,6 +70,7 @@ class Home extends Component{
                 <div className="titleBanner">Fitness Tracker</div>
                 <div className="userCard">
                     <div>
+                        <div className="attribution">Cats provided by robohash.org</div>
                         <img className="userImg" src={img} alt='' />
                         <div>{email}</div>
                     </div>
@@ -110,6 +112,10 @@ class Home extends Component{
                     <button onClick={e=>this.test({showFoodForm})}>Test</button>
                     <button onClick={e=>this.props.toggleShowFoodForm({showFoodForm})}>Add Foods</button>
                     {showFoodForm && <FoodForm/>}
+                </div>
+
+                <div className='card'>
+                    <FoodList/>
                 </div>
             </div>
         )
