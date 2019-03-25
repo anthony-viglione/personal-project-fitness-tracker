@@ -21,6 +21,9 @@ gray #E1DDDB
 .FoodFormGoalBarHolder{
   margin:20px 20px;
 }
+.modalContent{
+  width: 700px; /* Could be more or less, depending on screen size */
+}
 }
 
 @media screen and (max-width: 360px){
@@ -39,6 +42,9 @@ gray #E1DDDB
 .FoodFormGoalBarHolder{
   margin: 10px 10px;
   
+}
+.modalContent{
+  width: 80%; /* Could be more or less, depending on screen size */
 }
 }
 /* keep universal */
@@ -97,13 +103,16 @@ button{
   margin: 15% auto; /* 15% from the top and centered */
   /* padding: 20px; */
   border: 1px solid #0C4A60;
-  width: 80%; /* Could be more or less, depending on screen size */
 }
 .close {
   /* color: red; */
   background-color: #EF6C33;
   float: right;
   font-weight: bold;
+}
+
+.attribution {
+  font-size:.5em;
 }
 
   /* Potentially make conditional; Styling for Login component */
