@@ -89,5 +89,6 @@ module.exports = {
     addFood: async(req,res) => {
         console.log('hit addFood')
         console.log(req.body)
+        console.log(req.params)
     }
 }
