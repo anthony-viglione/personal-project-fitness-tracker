@@ -7,8 +7,11 @@ class FoodForm extends Component{
 
     render(){
         return(
-            <div>
-                FoodForm Component
+            <div className="modal">
+                <div className="modalContent">
+                    <button className='close'>Close</button>
+                    FoodForm Component
+                </div>
             </div>
         )
     }
