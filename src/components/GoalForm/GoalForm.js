@@ -64,15 +64,16 @@ class GoalForm extends Component{
     }
 
     render(){
-        const{calorieGoal, fatGoalPercent, proteinGoalPercent, carbGoalPercent} = this.props
+        const{calorieGoal, fatGoalPercent, proteinGoalPercent, carbGoalPercent, showGoalForm, toggleShowGoalForm} = this.props
         // console.log(calorieGoal, fatGoalPercent,proteinGoalPercent,carbGoalPercent)
         // console.log(this)
         return(
             <div className="card">
                 <div className="goalCardTitle">
                     Goal Updater
+                    <button className="close" onClick={e=>{toggleShowGoalForm({showGoalForm})}}>close</button>
                 </div>
-                
+
                 <div>
                     <div className = "goalBar">
                         <div className= "goal">Calorie Goal</div>
