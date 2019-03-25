@@ -41,7 +41,7 @@ gray #E1DDDB
   display: flex;
   flex-direction: column;
   align-items: center;
-  
+  overflow: scroll;
 }
 
 input{
