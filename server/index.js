@@ -37,8 +37,13 @@ app.get('/api/current/goals', ctrl.getGoals);
 
 app.put('/api/goals/:email', ctrl.editGoals);
 
+app.get('/api/getFoods', ctrl.getFoods);
+
+app.post('/api/addFood/:id', ctrl.addFood);
+
+
+
+
 app.get('*', (req, res)=>{  //digital ocean hosting instructions from devmtn
     res.sendFile(path.join(__dirname, '../build/index.html'));
 });
-
-app.post('/api/addFood/:id', ctrl.addFood);
