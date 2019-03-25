@@ -13,12 +13,14 @@ PRIMARY KEY(id)
 
 CREATE TABLE foods (
 id SERIAL NOT NULL,
+user_id INTEGER NOT NULL,
 food VARCHAR(100),
 calories INTEGER,
 fat INTEGER,
 protein INTEGER,
 carb INTEGER,
-PRIMARY KEY(id)
+PRIMARY KEY(id),
+FOREIGN KEY (user_id) REFERENCES fitness_users(id)
 );
 
 CREATE TABLE food_history (
