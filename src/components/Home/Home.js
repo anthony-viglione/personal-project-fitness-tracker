@@ -1,8 +1,9 @@
 import React, {Component} from 'react';
 import axios from 'axios';
 import { connect } from 'react-redux';
-import {updateUser, updateGoals, clearUser, toggleShowGoalForm} from './../../redux/reducer';
+import {updateUser, updateGoals, clearUser, toggleShowGoalForm, toggleShowFoodForm} from './../../redux/reducer';
 import GoalForm from '../GoalForm/GoalForm';
+import FoodForm from '../FoodForm/FoodForm';
 
 
 class Home extends Component{
@@ -13,7 +14,8 @@ class Home extends Component{
             fatGoalPercent:0,
             proteinGoalPercent:0,
             carbGoalPercent:0,
-            showGoalForm:true
+            showGoalForm:true,
+            showFoodForm:false
         }
     }
     componentDidMount() {
@@ -51,8 +53,13 @@ class Home extends Component{
         this.props.history.push('/')
     }
 
+    test() {
+        console.log(this.props.showFoodForm)
+    }
+
     render(){
-        const {email, img, calorieGoal, fatGoalPercent, proteinGoalPercent, carbGoalPercent, showGoalForm} = this.props
+        // console.log(this.props)
+        const {email, img, calorieGoal, fatGoalPercent, proteinGoalPercent, carbGoalPercent, showGoalForm, showFoodForm} = this.props
         const fatGoalGrams =(calorieGoal*(fatGoalPercent*.01)/9).toFixed(0)
         const proteinGoalGrams =(calorieGoal*(proteinGoalPercent*.01)/4).toFixed(0)
         const carbGoalGrams =(calorieGoal*(carbGoalPercent*.01)/4).toFixed(0)
@@ -98,6 +105,12 @@ class Home extends Component{
                 <div>
                     {showGoalForm && <GoalForm/>}
                 </div>
+
+                <div className="card">
+                    <button onClick={e=>this.test({showFoodForm})}>Test</button>
+                    <button onClick={e=>this.props.toggleShowFoodForm({showFoodForm})}>Add Foods</button>
+                    {showFoodForm && <FoodForm/>}
+                </div>
             </div>
         )
     }
@@ -112,7 +125,8 @@ const mapStateToProps = reduxState => {
         showGoalForm: reduxState.showGoalForm,
         test: reduxState.test,
         email: reduxState.email,
-        img: reduxState.img
+        img: reduxState.img,
+        showFoodForm: reduxState.showFoodForm
 
     }
 }
@@ -120,6 +134,7 @@ const mapDispatchToProps ={ //reducer holds the methods
     updateUser,
     updateGoals,
     clearUser,
-    toggleShowGoalForm
+    toggleShowGoalForm,
+    toggleShowFoodForm
 }
 export default connect(mapStateToProps, mapDispatchToProps) (Home);
