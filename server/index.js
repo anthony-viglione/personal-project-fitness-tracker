@@ -41,4 +41,4 @@ app.get('*', (req, res)=>{  //digital ocean hosting instructions from devmtn
     res.sendFile(path.join(__dirname, '../build/index.html'));
 });
 
-app.post('/api/addFood', ctrl.addFood);
+app.post('/api/addFood/:id', ctrl.addFood);
