@@ -80,7 +80,7 @@ class FoodForm extends Component{
                             <input placeholder={fat} onChange={e => this.handleInput('fat', e.target.value)}/>
                         </div>
                         <div>
-                            <button>
+                            <button onClick={()=>this.addFood()}>
                                 Save
                             </button>
                         </div>
