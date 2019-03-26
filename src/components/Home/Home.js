@@ -109,7 +109,7 @@ class Home extends Component{
                     {showFoodForm && <FoodForm/>}
                 </div>
 
-                <div className='card'>
+                <div >
                     <FoodList/>
                 </div>
             </div>
