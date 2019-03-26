@@ -6,7 +6,7 @@ const initialState = {
     fatGoalPercent:0,
     proteinGoalPercent:0,
     carbGoalPercent:0,
-    showGoalForm:true,
+    showGoalForm:false,
     showFoodForm:false
 
 
