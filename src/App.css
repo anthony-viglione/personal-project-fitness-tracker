@@ -13,6 +13,8 @@ gray #E1DDDB
   }
   .goalCardOuter{
     height: 175px;
+    width: 700px;
+
 
   }
   .goalButton{
@@ -24,6 +26,12 @@ gray #E1DDDB
 .modalContent{
   width: 700px; /* Could be more or less, depending on screen size */
 }
+.card{
+  width: 700px;
+}
+.foodProp{
+  width: 100px;
+}
 }
 
 @media screen and (max-width: 360px){
@@ -33,6 +41,7 @@ gray #E1DDDB
     height:740px;
   }
   .goalCardOuter{
+    width: 350px;
     height: 150px;
 
   }
@@ -45,6 +54,10 @@ gray #E1DDDB
 }
 .modalContent{
   width: 80%; /* Could be more or less, depending on screen size */
+}
+.card{
+  width: 350px;
+
 }
 }
 /* keep universal */
@@ -70,7 +83,6 @@ button{
 }
 
 .card{
-  width: 350px;
   border: solid #0C4A60;
   border-radius:5px;
   color: #0C4A60;
@@ -78,6 +90,7 @@ button{
   flex-direction: column;
   align-items: center;
   margin-bottom:15px;
+  overflow: scroll;
 }
 
 .goalBar{
@@ -173,7 +186,6 @@ button{
   }
 
   .goalCardOuter{
-    width: 350px;
     border: solid #0C4A60;
     border-radius:5px;
     color: #0C4A60;
