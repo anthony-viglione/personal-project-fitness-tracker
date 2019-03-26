@@ -100,6 +100,7 @@ module.exports = {
         res.sendStatus(200)
 
     },
+
     getFoods: async(req,res) => {
         console.log('controller foods')
         const {id} = req.session.user;
@@ -108,5 +109,18 @@ module.exports = {
         const db = req.app.get('db');
         let foods = await db.tracker.get_foods({id})
         res.status(200).send(foods)
+    },
+
+    deleteFood: async(req, res) => {
+        const {id}=req.params;
+        console.log({id:id})
+
+        const db = req.app.get('db');
+        let confirm = await db.tracker.delete_food({id});
+        if(confirm) {
+            res.sendStatus(200)
+        } else {
+            res.sendStatus(500)
+        }
     }
 }
