@@ -16,14 +16,16 @@ class FoodList extends Component{
         console.log(res.data)
         let foods = res.data.map((food)=>{
             return(
-                <div style={{dislpay:'flex', margin:'5px 5px 5px 5px'}}>
-                    <div>{food.email}</div>
-                    <div>{food.food}</div>
-                    <div>{food.calories}</div>
-                    <div>{food.carb}</div>
-                    <div>{food.protein}</div>
-                    <div>{food.fat}</div>
-                    <button>delete</button>
+                <div key={food.id} style={{display:'flex'}}>
+                    <div className='foodProp'>{food.email}</div>
+                    <div className='foodProp'>{food.food}</div>
+                    <div className='foodProp'>{food.calories}</div>
+                    <div className='foodProp'>{food.carb}</div>
+                    <div className='foodProp'>{food.protein}</div>
+                    <div className='foodProp'>{food.fat}</div>
+                    <div className='foodProp'>
+                        <button className="close" onClick={()=>this.deleteFood(food.id)}>delete</button>
+                    </div>
                 </div>
 
             )
@@ -34,18 +36,23 @@ class FoodList extends Component{
         })
     }
 
+    deleteFood = async (id)=>{
+        axios.delete(`/api/deleteFood/${id}`)
+    }
+
     render(){
         return(
-            <div >
-                <div >List of Foods for {this.state.name}</div>
-                <div style={{display:'flex'}}>
-                    <div style={{dislpay:'flex', margin:'5px 5px 5px 5px'}}>
-                        <div>Person</div>
-                        <div>Food</div>
-                        <div>Calories</div>
-                        <div>Carb</div>
-                        <div>Protein</div>
-                        <div>Fat</div>
+            <div>
+                <h3 >List of Foods for {this.state.name}</h3>
+                <div className='card'>
+                    <div style={{display:'flex'}}>
+                        <div className='foodProp'>Person</div>
+                        <div className='foodProp'>Food</div>
+                        <div className='foodProp'>Calories</div>
+                        <div className='foodProp'>Carb</div>
+                        <div className='foodProp'>Protein</div>
+                        <div className='foodProp'>Fat</div>
+                        <div className='foodProp'></div>
                     </div>
                     {this.state.foods}
                 </div>
