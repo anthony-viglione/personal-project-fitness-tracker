@@ -16,6 +16,7 @@ class GoalForm extends Component{
     }
 
     componentDidMount(){
+        // console.log(this.props)
         const{calorieGoal, fatGoalPercent, proteinGoalPercent, carbGoalPercent} = this.props
         this.setState({
             calorieGoal,
