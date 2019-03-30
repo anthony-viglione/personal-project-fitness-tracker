@@ -72,8 +72,8 @@ class Login extends Component{
         // console.log({password:password})
         // console.log({email:email})
         return(
-            <div>
-                <div className="titleBox">
+            <div className="loginPageWrap">
+                <div className="loginBox">
                     <h1>Fitness Tracker</h1>
                 </div>
                 <div className="loginBox">
