@@ -57,6 +57,7 @@ class FoodForm extends Component{
         return(
             <div className="modal">
                 <div className="modalContent">
+                    Food Adder
                     <button className='close' onClick={e=>this.props.toggleShowFoodForm({showFoodForm})}>Close</button>
                     <div className='goalCardTitle'>Add a Food</div>
                     <div className='FoodFormGoalBarHolder'>

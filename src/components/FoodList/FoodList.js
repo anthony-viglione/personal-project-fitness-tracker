@@ -42,7 +42,7 @@ class FoodList extends Component{
 
     render(){
         return(
-            <div>
+            <>
                 <h3 >List of Foods for {this.state.name}</h3>
                 <div className='card'>
                     <div style={{display:'flex'}}>
@@ -56,7 +56,7 @@ class FoodList extends Component{
                     </div>
                     {this.state.foods}
                 </div>
-            </div>
+            </>
         )
     }
 }
