@@ -6,140 +6,88 @@ ice blue #ABDFF1
 gray #E1DDDB
 */
 @media screen and (min-width: 361px) {
-  .App {
+  .App{
     background-image:linear-gradient(#EF6C33,#ABDFF1,#ABDFF1);
     width:100vw;
     height:100vh;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow: scroll;
+  }
+  input{
+    border-radius: 5px;
+    background-color:#E1DDDB;
+    color:#0C4A60;
+  }
+  button{
+    font-weight: bolder;
+    font-size: 1em;
+    border-radius: 5px;
+    color:#0C4A60;
+  }
+  .card{
+    border: solid #0C4A60;
+    border-radius:5px;
+    color: #0C4A60;
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom:15px;
+    overflow: scroll;
+  }
+  .goalBar{
+    display:flex;
+    justify-content: space-between;
+  }
+  .modal {
+    /* display: none; Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+  }
+  .modalContent {
+    background-color: #ABDFF1;
+    color: #0C4A60;
+    margin: 15% auto; /* 15% from the top and centered */
+    /* padding: 20px; */
+    border: 1px solid #0C4A60;
+    width: 700px; /* Could be more or less, depending on screen size */
+  }
+  .close {
+    /* color: red; */
+    background-color: #EF6C33;
+    float: right;
+    font-weight: bold;
   }
   .goalCardOuter{
     height: 175px;
     width: 700px;
-
-
   }
   .goalButton{
     margin-top: 15px;
-}
-.FoodFormGoalBarHolder{
-  margin:20px 20px;
-}
-.modalContent{
-  width: 700px; /* Could be more or less, depending on screen size */
-}
-.card{
-  width: 700px;
-}
-.foodProp{
-  width: 100px;
-}
-}
-
-@media screen and (max-width: 360px){
-  .App {
-    background-image:linear-gradient(#ABDFF1,#ABDFF1,#EF6C33);
-    width:360px;
-    height:740px;
   }
-  .goalCardOuter{
-    width: 350px;
-    height: 150px;
-
+  .FoodFormGoalBarHolder{
+     margin:20px 20px;
   }
-  .goalButton{
-    margin-top: 5px;
-}
-.FoodFormGoalBarHolder{
-  margin: 10px 10px;
+  .card{
+    width: 700px;
+  }
+  .foodProp{
+    width: 100px;
+  }
+  /* ----- Login Component ----- Login Component ----- Login Component ----- Login Component ----- Login Component ----- Login Component */
   
-}
-.modalContent{
-  width: 80%; /* Could be more or less, depending on screen size */
-}
-.card{
-  width: 350px;
-
-}
-}
-/* keep universal */
-.App{
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  overflow: scroll;
-}
-
-input{
-  border-radius: 5px;
-  background-color:#E1DDDB;
-  color:#0C4A60;
-}
-
-button{
-  font-weight: bolder;
-  font-size: 1em;
-  border-radius: 5px;
-  color:#0C4A60;
-}
-
-.card{
-  border: solid #0C4A60;
-  border-radius:5px;
-  color: #0C4A60;
-  display:flex;
-  flex-direction: column;
-  align-items: center;
-  margin-bottom:15px;
-  overflow: scroll;
-}
-
-.goalBar{
-  display:flex;
-  justify-content: space-between;
-}
-
-.modal {
-  /* display: none; Hidden by default */
-  position: fixed; /* Stay in place */
-  z-index: 1; /* Sit on top */
-  left: 0;
-  top: 0;
-  width: 100%; /* Full width */
-  height: 100%; /* Full height */
-  overflow: auto; /* Enable scroll if needed */
-  background-color: rgb(0,0,0); /* Fallback color */
-  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
-}
-.modalContent {
-  background-color: #ABDFF1;
-  color: #0C4A60;
-  margin: 15% auto; /* 15% from the top and centered */
-  /* padding: 20px; */
-  border: 1px solid #0C4A60;
-}
-.close {
-  /* color: red; */
-  background-color: #EF6C33;
-  float: right;
-  font-weight: bold;
-}
-
-.attribution {
-  font-size:.5em;
-}
-
-  /* Potentially make conditional; Styling for Login component */
-
-  .titleBox{
-    width: 300px;
-    height: 150px;
-    border:solid #0C4A60;
-    border-radius:5px;
-    margin-top: 5vh;
-    margin-bottom: 5vh;
-    color:#0C4A60;
+  .loginPageWrap{
+    display:flex;
   }
-  
   .loginBox{
     width: 300px;
     height: 150px;
@@ -149,6 +97,7 @@ button{
     display:flex;
     flex-direction: column;
     align-items: center;
+    margin: 10vh 5vw 0vh 5vw;
   }
   .loginBox > div{
     display: flex;
@@ -165,8 +114,7 @@ button{
     width: 100px;
     margin: 10px 30px 10px 30px;
   }
-
-  /* Potentially make conditional; Styling for Home component */
+  /* ----- Home component ----- Home component ----- Home component ----- Home component ----- Home component ----- Home component */
 
   .titleBanner{
     font-weight:bolder;
@@ -184,7 +132,6 @@ button{
     width: 75px;
     height: 75px;
   }
-
   .goalCardOuter{
     border: solid #0C4A60;
     border-radius:5px;
@@ -202,18 +149,169 @@ button{
   .goalCardInner{
     width:300px;
   }
-
   .goal{
     font-weight: bold;
   }
-
   button{
     margin: 0px 0px 5px 0px ;
   }
 
+}
 
-  /* Potentially make conditional; Styling for FoodForm component */
 
-  /* .FoodFormGoalBarHolder{
-    margin:20px 20px;
-  } */
+
+
+
+
+@media screen and (max-width: 360px){
+  .App{
+    background-image:linear-gradient(#ABDFF1,#ABDFF1,#EF6C33);
+    width:360px;
+    height:740px;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+    overflow: scroll;
+  }
+  input{
+    border-radius: 5px;
+    background-color:#E1DDDB;
+    color:#0C4A60;
+  }
+  button{
+    font-weight: bolder;
+    font-size: 1em;
+    border-radius: 5px;
+    color:#0C4A60;
+  }
+  .card{
+    border: solid #0C4A60;
+    border-radius:5px;
+    color: #0C4A60;
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom:15px;
+    overflow: scroll;
+  }
+  .goalBar{
+    display:flex;
+    justify-content: space-between;
+  }
+  .modal {
+    /* display: none; Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+  }
+  .modalContent {
+    background-color: #ABDFF1;
+    color: #0C4A60;
+    margin: 15% auto; /* 15% from the top and centered */
+    /* padding: 20px; */
+    border: 1px solid #0C4A60;
+    width: 80%; /* Could be more or less, depending on screen size */
+  }
+  .close {
+    /* color: red; */
+    background-color: #EF6C33;
+    float: right;
+    font-weight: bold;
+  }
+  .attribution {
+    font-size:.5em;
+  }
+  .attribution {
+    font-size:.5em;
+  }
+  .goalCardOuter{
+    width: 350px;
+    height: 150px;
+  }
+  .goalButton{
+    margin-top: 5px;
+  }
+  .FoodFormGoalBarHolder{
+    margin: 10px 10px;
+  }
+  .card{
+    width: 350px;
+  }
+  /* ----- Login Component ----- Login Component ----- Login Component ----- Login Component ----- Login Component ----- Login Component */
+
+  .loginBox{
+    width: 300px;
+    height: 150px;
+    border: solid #0C4A60;
+    border-radius:5px;
+    color: #0C4A60;
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top:5vh;
+
+  }
+  .loginBox > div{
+    display: flex;
+    padding: 15px 0px 0px 0px;
+    font-weight: bold;
+  }
+  .emailBox > div{
+    padding-right: 36px;
+  }
+  .passwordBox > div{
+    padding-right: 5px
+  }
+  .buttonBox > button{
+    width: 100px;
+    margin: 10px 30px 10px 30px;
+  }
+  /* ----- Home component ----- Home component ----- Home component ----- Home component ----- Home component ----- Home component */
+
+  .titleBanner{
+    font-weight:bolder;
+    font-size: 2em;
+    color:#0C4A60 ;
+  }
+  .userCard{
+    display:flex;
+    justify-content: space-between;
+    height: 100px;
+    padding-top: 20px;
+    padding-bottom: 15px;
+  }
+  .userImg{
+    width: 75px;
+    height: 75px;
+  }
+  .goalCardOuter{
+    border: solid #0C4A60;
+    border-radius:5px;
+    color: #0C4A60;
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom:15px;
+  }
+  .goalCardTitle{
+    font-weight: bold;
+    font-size: 1.5em;
+    margin: 5px 0px 5px 0;
+  }
+  .goalCardInner{
+    width:300px;
+  }
+  .goal{
+    font-weight: bold;
+  }
+  button{
+    margin: 0px 0px 5px 0px ;
+  }
+}
