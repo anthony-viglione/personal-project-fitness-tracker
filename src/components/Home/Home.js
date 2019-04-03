@@ -16,7 +16,8 @@ class Home extends Component{
             proteinGoalPercent:0,
             carbGoalPercent:0,
             showGoalForm:true,
-            showFoodForm:false
+            showFoodForm:false,
+            showNav:false
         }
     }
     componentDidMount() {
@@ -54,6 +55,12 @@ class Home extends Component{
         this.props.history.push('/')
     }
 
+    toggleNav = () => {
+        this.setState({
+            showNav: !this.state.showNav
+        })
+    }
+
     render(){
         // console.log(this.props)
         const {email, img, calorieGoal, fatGoalPercent, proteinGoalPercent, carbGoalPercent, showGoalForm, showFoodForm} = this.props
@@ -65,14 +72,33 @@ class Home extends Component{
             <div >
                 <div className="titleBanner">Fitness Tracker</div>
                 <div className="userCard">
+
                     <div>
                         <div className="attribution">Cats provided by robohash.org</div>
-                        <img className="userImg" src={img} alt='' />
+                        <img className="userImg" src={img} alt=''/>
                         <div>{email}</div>
                     </div>
-                        <div>
-                        <button onClick={this.logout}>Logout</button>
+
+
+                        <div className='nav1'>
+                            <div><button onClick={e => this.props.toggleShowGoalForm({showGoalForm})}>Change Goals</button></div>
+                            <div><button onClick={e=>this.props.toggleShowFoodForm({showFoodForm})}>Add Foods</button></div>
+                            <div><button onClick={this.logout}>Logout</button></div>
                         </div>
+
+                        {this.state.showNav &&                         
+                            <div className='nav2'>
+                                <div><button onClick={e => this.props.toggleShowGoalForm({showGoalForm})}>Change Goals</button></div>
+                                <div><button onClick={e=>this.props.toggleShowFoodForm({showFoodForm})}>Add Foods</button></div>
+                                <div><button onClick={this.logout}>Logout</button></div>
+                            </div>
+                        }
+
+                        <div className='nav2'>
+                            <img src="https://icongr.am/material/menu.svg" alt="nav button" style={{width:'50px'}} onClick={()=>this.toggleNav()}/>
+                        </div>
+
+
                 </div>
 
                 <div className="goalCardOuter">
@@ -95,17 +121,13 @@ class Home extends Component{
                                 <div>{carbGoalGrams}g</div>
                             </div>
                         </div>
-                    <div className="goalButton">
-                        {!showGoalForm && <button onClick={e => this.props.toggleShowGoalForm({showGoalForm})}>{toggleButton}</button>}
-                    </div>
                 </div>
 
                 <div>
                     {showGoalForm && <GoalForm/>}
                 </div>
 
-                <div className="card">
-                    <button onClick={e=>this.props.toggleShowFoodForm({showFoodForm})}>Add Foods</button>
+                <div>
                     {showFoodForm && <FoodForm/>}
                 </div>
 
