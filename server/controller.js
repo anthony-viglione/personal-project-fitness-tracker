@@ -102,13 +102,22 @@ module.exports = {
     },
 
     getFoods: async(req,res) => {
-        console.log('controller foods')
-        const {id} = req.session.user;
-        console.log(id)
+        // console.log('controller foods')
+        const {id, email} = req.session.user;
+        // console.log(id)
+        // console.log({session:req.session.user})
 
         const db = req.app.get('db');
         let foods = await db.tracker.get_foods({id})
-        res.status(200).send(foods)
+        // console.log(foods.length)
+        if(foods.length !== 0){
+            res.status(200).send(foods)
+        }
+        else {
+            foods.unshift({email, food:"YOU", calories:"MUST", carb:"ADD", protein:"A", fat:"Food", id:"none"});
+            // console.log(foods);
+            res.status(200).send(foods)
+        }
     },
 
     deleteFood: async(req, res) => {
