@@ -40,6 +40,7 @@ app.put('/api/goals/:email', ctrl.editGoals);
 app.get('/api/getFoods', ctrl.getFoods);
 
 app.post('/api/addFood/:id', ctrl.addFood);
+
 app.delete('/api/deleteFood/:id', ctrl.deleteFood);
 
 
