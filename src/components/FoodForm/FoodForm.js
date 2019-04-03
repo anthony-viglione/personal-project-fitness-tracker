@@ -24,7 +24,7 @@ class FoodForm extends Component{
 
     addFood = async()=>{
         const{food, calories, protein, carb, fat} = this.state
-        const{id} = this.props
+        const{id,showFoodForm} = this.props
         let newFood = {
             food,
             calories,
@@ -38,6 +38,7 @@ class FoodForm extends Component{
         }catch(err) {
             console.log(err)
         }
+        this.props.toggleShowFoodForm({showFoodForm})
     }
 
     handleFireTwoFunctions = async () => {
@@ -57,10 +58,13 @@ class FoodForm extends Component{
         return(
             <div className="modal">
                 <div className="modalContent">
-                    Food Adder
-                    <button className='close' onClick={e=>this.props.toggleShowFoodForm({showFoodForm})}>Close</button>
-                    <div className='goalCardTitle'>Add a Food</div>
-                    <div className='FoodFormGoalBarHolder'>
+                    <button className='close' onClick={e=>this.props.toggleShowFoodForm({showFoodForm})}>
+                        Close
+                    </button>
+                    <div className='goalCardTitle'>
+                        Add a Food
+                    </div>
+                    <div className='formGoalBarHolder'>
                         <div className='goalBar'>
                             <div className='goal'>
                                 Food
@@ -91,12 +95,12 @@ class FoodForm extends Component{
                             </div>
                             <input placeholder={fat} onChange={e => this.handleInput('fat', e.target.value)}/>
                         </div>
-                        <div>
-                            <button onClick={()=>this.addFood()}>
-                                Save
-                            </button>
-                        </div>
                     </div>
+
+                    <button onClick={()=>this.addFood()}>
+                        Add
+                    </button>
+                    
                 </div>
             </div>
         )
