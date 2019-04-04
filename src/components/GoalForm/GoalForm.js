@@ -34,6 +34,7 @@ class GoalForm extends Component{
 
     changeGoals = async()=>{
         const{calorieGoal, fatGoalPercent, proteinGoalPercent, carbGoalPercent} = this.state
+        const{email} = this.props
         let userGoals = {
             calorieGoal,
             fatGoalPercent,
@@ -41,7 +42,6 @@ class GoalForm extends Component{
             carbGoalPercent
         }
         try{
-            const{email} = this.props
             let res = await axios.put(`/api/goals/${email}`, userGoals)
             // console.log(res.data)
             // console.log(res.data[0])
@@ -59,9 +59,9 @@ class GoalForm extends Component{
     }
 
     handleFireTwoFunctions = async () => {
-        const{showGoalForm} = this.props
+        const{showGoalForm, toggleShowGoalForm} = this.props
         await this.changeGoals()
-        this.props.toggleShowGoalForm({showGoalForm})
+        toggleShowGoalForm({showGoalForm})
     }
 
     render(){
