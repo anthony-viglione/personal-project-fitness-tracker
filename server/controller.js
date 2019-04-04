@@ -95,9 +95,9 @@ module.exports = {
         console.log({userId:id})
 
         const db = req.app.get('db');
-        let foodId = await db.tracker.add_food({id, food, calories, protein, carb, fat})
-        console.log({userFoodsIds:foodId})
-        res.sendStatus(200)
+        let foods = await db.tracker.add_food({id, food, calories, protein, carb, fat})
+        console.log({userFoods:foods})
+        res.status(200).send(foods)
 
     },
 
@@ -117,17 +117,21 @@ module.exports = {
             foods.unshift({email, food:"YOU", calories:"MUST", carb:"ADD", protein:"A", fat:"Food", id:"none"});
             // console.log(foods);
             res.status(200).send(foods)
+            // SInce it keeps one item in array, last item doesn't update in app.
         }
     },
 
     deleteFood: async(req, res) => {
+        console.log({params:req.params})
         const {id}=req.params;
-        console.log({id:id})
+        console.log(req.session)
+        const {id: user_id} = req.session.user;
 
         const db = req.app.get('db');
-        let confirm = await db.tracker.delete_food({id});
-        if(confirm) {
-            res.sendStatus(200)
+        let remaining = await db.tracker.delete_food(id, user_id);
+        console.log({remaining:remaining})
+        if(remaining) {
+            res.status(200).send(remaining)
         } else {
             res.sendStatus(500)
         }
