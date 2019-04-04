@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import {toggleShowFoodForm} from '../../redux/reducer';
 import axios from 'axios';
+import {toggleShowFoodForm, updateFoods} from '../../redux/reducer';
 
 class FoodForm extends Component{
     constructor(){
@@ -19,12 +19,12 @@ class FoodForm extends Component{
         this.setState({
             [prop]:val
         })
-        console.log({[prop]:this.state[prop]})
+        // console.log({[prop]:this.state[prop]})
     }
 
     addFood = async()=>{
         const{food, calories, protein, carb, fat} = this.state
-        const{id,showFoodForm} = this.props
+        const{ id} = this.props
         let newFood = {
             food,
             calories,
@@ -34,22 +34,18 @@ class FoodForm extends Component{
         }
         try{
             let res = await axios.post(`/api/addFood/id${id}`, newFood)
-            console.log(res.data)
+            console.log({foodFormRES:res.data})
+            this.props.updateFoods({foods:res.data})
+
         }catch(err) {
             console.log(err)
         }
-        this.props.toggleShowFoodForm({showFoodForm})
     }
 
     handleFireTwoFunctions = async () => {
+        const { showFoodForm, toggleShowFoodForm } = this.props
         await this.addFood()
-        this.setState({
-            food:'',
-            calories:0,
-            protein:0,
-            carb:0,
-            fat:0
-        })
+        toggleShowFoodForm({showFoodForm})
     }
     
     render(){
@@ -97,7 +93,7 @@ class FoodForm extends Component{
                         </div>
                     </div>
 
-                    <button onClick={()=>this.addFood()}>
+                    <button onClick={()=>this.handleFireTwoFunctions()}>
                         Add
                     </button>
                     
@@ -114,4 +110,4 @@ const mapStateToProps = reduxState => {
     }
 }
 
-export default connect(mapStateToProps,{toggleShowFoodForm})(FoodForm);
+export default connect(mapStateToProps,{toggleShowFoodForm, updateFoods})(FoodForm);
