@@ -114,7 +114,7 @@ module.exports = {
             res.status(200).send(foods)
         }
         else {
-            foods.unshift({email, food:"YOU", calories:"MUST", carb:"ADD", protein:"A", fat:"Food", id:"none"});
+            foods.unshift({email, food:"YOU", calories:"MUST", carb:"ADD", protein:"A", fat:"Food", id:0});
             // console.log(foods);
             res.status(200).send(foods)
             // SInce it keeps one item in array, last item doesn't update in app.
