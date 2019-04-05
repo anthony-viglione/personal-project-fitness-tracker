@@ -5,7 +5,7 @@ coral #EF6C33
 ice blue #ABDFF1
 gray #E1DDDB
 */
-@media screen and (min-width: 361px) {
+@media screen and (min-width: 416px) {
   .App{
     background-image:linear-gradient(#EF6C33,#ABDFF1,#ABDFF1);
     width:100vw;
@@ -27,6 +27,14 @@ gray #E1DDDB
     border-radius: 5px;
     color:#0C4A60;
   }
+  .nav1{
+    width: 400px;
+    display: flex;
+    justify-content: space-evenly;
+  }
+  .nav2{
+    display:none;
+  }
   .card{
     border: solid #0C4A60;
     border-radius:5px;
@@ -40,6 +48,7 @@ gray #E1DDDB
   .goalBar{
     display:flex;
     justify-content: space-between;
+    margin: 0px 50px;
   }
   .modal {
     /* display: none; Hidden by default */
@@ -74,14 +83,11 @@ gray #E1DDDB
   .goalButton{
     margin-top: 15px;
   }
-  .FoodFormGoalBarHolder{
+  .formGoalBarHolder{
      margin:20px 20px;
   }
   .card{
     width: 700px;
-  }
-  .foodProp{
-    width: 100px;
   }
   /* ----- Login Component ----- Login Component ----- Login Component ----- Login Component ----- Login Component ----- Login Component */
   
@@ -132,6 +138,9 @@ gray #E1DDDB
     width: 75px;
     height: 75px;
   }
+  .attribution {
+    font-size:.5em;
+  }
   .goalCardOuter{
     border: solid #0C4A60;
     border-radius:5px;
@@ -155,7 +164,19 @@ gray #E1DDDB
   button{
     margin: 0px 0px 5px 0px ;
   }
-
+/* -------------------------------------------------------------------------------------------------------------------------------------------------------------------------- */
+.foodListContainer{
+  width:700px;
+  display: flex;
+  justify-content: space-evenly;
+}
+.foodPropHeader{
+  width: 100px;
+  font-weight: bold;
+}
+.foodProp{
+  width: 100px;
+}
 }
 
 
@@ -163,11 +184,13 @@ gray #E1DDDB
 
 
 
-@media screen and (max-width: 360px){
+@media screen and (max-width: 415px){
   .App{
+    /* background-image: url('https://images.pexels.com/photos/326268/pexels-photo-326268.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500'); */
+
     background-image:linear-gradient(#ABDFF1,#ABDFF1,#EF6C33);
-    width:360px;
-    height:740px;
+    width:100vw;
+    height:100vh;
     display: flex;
     flex-direction: column;
     text-align: center;
@@ -184,6 +207,13 @@ gray #E1DDDB
     font-size: 1em;
     border-radius: 5px;
     color:#0C4A60;
+  }
+  .nav2{
+    display:flex;
+    flex-direction: column;
+  }
+  .nav1{
+    display: none;
   }
   .card{
     border: solid #0C4A60;
@@ -228,9 +258,6 @@ gray #E1DDDB
   .attribution {
     font-size:.5em;
   }
-  .attribution {
-    font-size:.5em;
-  }
   .goalCardOuter{
     width: 350px;
     height: 150px;
@@ -238,7 +265,7 @@ gray #E1DDDB
   .goalButton{
     margin-top: 5px;
   }
-  .FoodFormGoalBarHolder{
+  .formGoalBarHolder{
     margin: 10px 10px;
   }
   .card{
@@ -313,5 +340,23 @@ gray #E1DDDB
   }
   button{
     margin: 0px 0px 5px 0px ;
+  }
+
+  /* -------------------------------------------------------------------------------------------------------------------------------------------------------- */
+  .foodListContainer{
+    width:345px;
+    display: flex;
+    justify-content: space-evenly;
+  }
+  .foodPropHeader{
+    width: 60px;
+    font-weight: bold;
+  }
+  .foodProp{
+    width: 60px;
+    display: flex;   
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
   }
 }
