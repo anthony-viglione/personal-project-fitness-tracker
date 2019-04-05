@@ -34,6 +34,7 @@ class GoalForm extends Component{
 
     changeGoals = async()=>{
         const{calorieGoal, fatGoalPercent, proteinGoalPercent, carbGoalPercent} = this.state
+        const{email} = this.props
         let userGoals = {
             calorieGoal,
             fatGoalPercent,
@@ -41,7 +42,6 @@ class GoalForm extends Component{
             carbGoalPercent
         }
         try{
-            const{email} = this.props
             let res = await axios.put(`/api/goals/${email}`, userGoals)
             // console.log(res.data)
             // console.log(res.data[0])
@@ -59,9 +59,9 @@ class GoalForm extends Component{
     }
 
     handleFireTwoFunctions = async () => {
-        const{showGoalForm} = this.props
+        const{showGoalForm, toggleShowGoalForm} = this.props
         await this.changeGoals()
-        this.props.toggleShowGoalForm({showGoalForm})
+        toggleShowGoalForm({showGoalForm})
     }
 
     render(){
@@ -69,33 +69,37 @@ class GoalForm extends Component{
         // console.log(calorieGoal, fatGoalPercent,proteinGoalPercent,carbGoalPercent)
         // console.log(this)
         return(
-            <div className="card">
-                <div className="goalCardTitle">
-                    Goal Updater
-                    <button className="close" onClick={e=>{toggleShowGoalForm({showGoalForm})}}>close</button>
-                </div>
+            <div className="modal">
+                <div className="modalContent">
+                    <button className="close" onClick={e=>{toggleShowGoalForm({showGoalForm})}}>
+                        close
+                    </button>
+                    <div className="goalCardTitle">
+                        Goal Updater
+                    </div>
 
-                <div>
-                    <div className = "goalBar">
-                        <div className= "goal">Calorie Goal</div>
-                        <input placeholder={calorieGoal} onChange={e => this.handleInput('calorieGoal', e.target.value)}/>
-                    </div>
-                    <div className = "goalBar">
-                        <div className= "goal">Fat Goal</div>
-                        <input placeholder={fatGoalPercent}  onChange={e => this.handleInput('fatGoalPercent', e.target.value)}/>
-                    </div>
-                    <div className = "goalBar">
-                        <div className= "goal">Protein Goal</div>
-                        <input placeholder={proteinGoalPercent} onChange={e => this.handleInput('proteinGoalPercent', e.target.value)}/>
-                    </div>
-                    <div className = "goalBar">
-                        <div className= "goal">Carb Goal</div>
-                        <input placeholder={carbGoalPercent} onChange={e => this.handleInput('carbGoalPercent', e.target.value)}/>
+                    <div className="formGoalBarHolder">
+                        <div className = "goalBar">
+                            <div className= "goal">Calorie</div>
+                            <input placeholder={calorieGoal} onChange={e => this.handleInput('calorieGoal', e.target.value)}/>
                         </div>
-                </div>
+                        <div className = "goalBar">
+                            <div className= "goal">Fat</div>
+                            <input placeholder={fatGoalPercent}  onChange={e => this.handleInput('fatGoalPercent', e.target.value)}/>
+                        </div>
+                        <div className = "goalBar">
+                            <div className= "goal">Protein</div>
+                            <input placeholder={proteinGoalPercent} onChange={e => this.handleInput('proteinGoalPercent', e.target.value)}/>
+                        </div>
+                        <div className = "goalBar">
+                            <div className= "goal">Carb</div>
+                            <input placeholder={carbGoalPercent} onChange={e => this.handleInput('carbGoalPercent', e.target.value)}/>
+                            </div>
+                    </div>
 
-                <div>
-                    <button onClick={()=>this.handleFireTwoFunctions()}>ChangeGoals</button>
+                    <div>
+                        <button onClick={()=>this.handleFireTwoFunctions()}>Save Changes</button>
+                    </div>
                 </div>
             </div>
         )

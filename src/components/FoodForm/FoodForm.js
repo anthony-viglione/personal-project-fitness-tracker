@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import {toggleShowFoodForm} from '../../redux/reducer';
 import axios from 'axios';
+import {toggleShowFoodForm, updateFoods} from '../../redux/reducer';
 
 class FoodForm extends Component{
     constructor(){
@@ -19,12 +19,12 @@ class FoodForm extends Component{
         this.setState({
             [prop]:val
         })
-        console.log({[prop]:this.state[prop]})
+        // console.log({[prop]:this.state[prop]})
     }
 
     addFood = async()=>{
         const{food, calories, protein, carb, fat} = this.state
-        const{id} = this.props
+        const{ id} = this.props
         let newFood = {
             food,
             calories,
@@ -34,21 +34,18 @@ class FoodForm extends Component{
         }
         try{
             let res = await axios.post(`/api/addFood/id${id}`, newFood)
-            console.log(res.data)
+            console.log({foodFormRES:res.data})
+            this.props.updateFoods({foods:res.data})
+
         }catch(err) {
             console.log(err)
         }
     }
 
     handleFireTwoFunctions = async () => {
+        const { showFoodForm, toggleShowFoodForm } = this.props
         await this.addFood()
-        this.setState({
-            food:'',
-            calories:0,
-            protein:0,
-            carb:0,
-            fat:0
-        })
+        toggleShowFoodForm({showFoodForm})
     }
     
     render(){
@@ -57,9 +54,13 @@ class FoodForm extends Component{
         return(
             <div className="modal">
                 <div className="modalContent">
-                    <button className='close' onClick={e=>this.props.toggleShowFoodForm({showFoodForm})}>Close</button>
-                    <div className='goalCardTitle'>Add a Food</div>
-                    <div className='FoodFormGoalBarHolder'>
+                    <button className='close' onClick={e=>this.props.toggleShowFoodForm({showFoodForm})}>
+                        Close
+                    </button>
+                    <div className='goalCardTitle'>
+                        Add a Food
+                    </div>
+                    <div className='formGoalBarHolder'>
                         <div className='goalBar'>
                             <div className='goal'>
                                 Food
@@ -90,12 +91,12 @@ class FoodForm extends Component{
                             </div>
                             <input placeholder={fat} onChange={e => this.handleInput('fat', e.target.value)}/>
                         </div>
-                        <div>
-                            <button onClick={()=>this.addFood()}>
-                                Save
-                            </button>
-                        </div>
                     </div>
+
+                    <button onClick={()=>this.handleFireTwoFunctions()}>
+                        Add
+                    </button>
+                    
                 </div>
             </div>
         )
@@ -109,4 +110,4 @@ const mapStateToProps = reduxState => {
     }
 }
 
-export default connect(mapStateToProps,{toggleShowFoodForm})(FoodForm);
+export default connect(mapStateToProps,{toggleShowFoodForm, updateFoods})(FoodForm);
