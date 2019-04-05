@@ -77,11 +77,16 @@ class Home extends Component{
 
 
     deleteFood =  (id)=>{
-        axios.delete(`/api/deleteFood/${id}`).then(res=>{
-            console.log()
-            // console.log(res.data)
-            this.props.updateFoods({foods: res.data})
-        })
+        console.log({idToDelete:id})
+        if (id !== 0){
+            axios.delete(`/api/deleteFood/${id}`).then(res=>{
+                // console.log(res.data)
+                this.props.updateFoods({foods: res.data})
+            })
+        } else {
+            console.log('cant delete something that doesnt exist!')
+            alert(`Why are you trying to delete that? (It will go away if you add something)`)
+        }
     }
 
     render(){
